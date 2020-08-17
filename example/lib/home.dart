@@ -36,17 +36,17 @@ class HomePage extends StatelessWidget {
 							
 							Padding(
 								padding: EdgeInsets.symmetric(vertical: 10),
-								child: Text('OPTIONS DIALOGS', style: Theme.of(context).textTheme.bodyText1, textAlign: TextAlign.center)),
+								child: Text('CHOICES DIALOGS', style: Theme.of(context).textTheme.bodyText1, textAlign: TextAlign.center)),
 							
 							RaisedButton(
-								onPressed: () => _showOptionDialogButton(context), 
-								child: Text('OPTIONS DIALOG (BUTTON)')),
+								onPressed: () => _showChoicesDialogButton(context), 
+								child: Text('CHOICES DIALOG (BUTTON)')),
 							RaisedButton(
-								onPressed: () => _showOptionsDialogCheckBox(context), 
-								child: Text('OPTIONS DIALOG (CHECKBOX)')),
+								onPressed: () => _showChoicesDialogCheckBox(context), 
+								child: Text('CHOICES DIALOG (CHECKBOX)')),
 							RaisedButton(
-								onPressed: () => _showOptionsDialogRadioButton(context), 
-								child: Text('OPTIONS DIALOG (RADIO)')),
+								onPressed: () => _showChoicesDialogRadioButton(context), 
+								child: Text('CHOICES DIALOG (RADIO)')),
 
 						],
 					)
@@ -93,28 +93,28 @@ class HomePage extends StatelessWidget {
       
   	}
 
-	_showOptionDialogButton(BuildContext context) async {
+	_showChoicesDialogButton(BuildContext context) async {
 
-		String result = await showButtonDialog<String>(context,
+		String result = await showChoicesButtonDialog<String>(context,
 			title: Text('Select user'),
 			//content: Text('Select the user you want to use for the operation.'),
-			options: [
-				DialogOption(
+			choices: [
+				DialogChoice(
 					icon: Icon(Icons.person),
 					title: Text('Ricardo Crescenti'),
 					subtitle: Text('ricardo.crescenti@gmail.com'),
 					value: (context) => 'ricardo.crescenti'),
-				DialogOption(
+				DialogChoice(
 					icon: Icon(Icons.person),
 					title: Text('Ana Luiza Crescenti'),
 					subtitle: Text('ricardo.crescenti@gmail.com'),
 					value: (context) => 'analuiza.crescenti'),
-				DialogOption(
+				DialogChoice(
 					icon: Icon(Icons.person),
 					title: Text('Luis Otávio Crescenti'),
 					subtitle: Text('ricardo.crescenti@gmail.com'),
 					value: (context) => 'luisotavio.crescenti'),
-				DialogOption(
+				DialogChoice(
 					icon: Icon(Icons.add),
 					title: Text('Add new account'),
 					value: (context) => 'ricardo.crescenti'),
@@ -126,22 +126,22 @@ class HomePage extends StatelessWidget {
 
 	}
 
-	_showOptionsDialogCheckBox(BuildContext context) async {
+	_showChoicesDialogCheckBox(BuildContext context) async {
 
-		List<String> result = await showCheckBoxDialog<String>(context, 
+		List<String> result = await showChoicesCheckBoxDialog<String>(context, 
 			title: Text('Select users'),
-			options: [
-				DialogOption(
+			choices: [
+				DialogChoice(
 					icon: Icon(Icons.person),
 					title: Text('Ricardo Crescenti'),
 					subtitle: Text('ricardo.crescenti@gmail.com'),
 					value: (context) => 'ricardo.crescenti'),
-				DialogOption(
+				DialogChoice(
 					icon: Icon(Icons.person),
 					title: Text('Ana Luiza Crescenti'),
 					subtitle: Text('ricardo.crescenti@gmail.com'),
 					value: (context) => 'analuiza.crescenti'),
-				DialogOption(
+				DialogChoice(
 					icon: Icon(Icons.person),
 					title: Text('Luis Otávio Crescenti'),
 					subtitle: Text('ricardo.crescenti@gmail.com'),
@@ -154,22 +154,22 @@ class HomePage extends StatelessWidget {
 
 	}
 
-	_showOptionsDialogRadioButton(BuildContext context) async {
+	_showChoicesDialogRadioButton(BuildContext context) async {
 
-		String result = await showRadioDialog<String>(context, 
+		String result = await showChoicesRadioDialog<String>(context, 
 			title: Text('Select user'),
-			options: [
-				DialogOption(
+			choices: [
+				DialogChoice(
 					icon: Icon(Icons.person),
 					title: Text('Ricardo Crescenti'),
 					subtitle: Text('ricardo.crescenti@gmail.com'),
 					value: (context) => 'ricardo.crescenti'),
-				DialogOption(
+				DialogChoice(
 					icon: Icon(Icons.person),
 					title: Text('Ana Luiza Crescenti'),
 					subtitle: Text('ricardo.crescenti@gmail.com'),
 					value: (context) => 'analuiza.crescenti'),
-				DialogOption(
+				DialogChoice(
 					icon: Icon(Icons.person),
 					title: Text('Luis Otavio Crescenti'),
 					subtitle: Text('luisotavio.crescenti@gmail.com'),

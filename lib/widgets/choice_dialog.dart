@@ -1,32 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:standard_dialogs/standard_dialogs.dart';
 
-abstract class OptionsDialog<T> extends StatefulWidget {
+abstract class ChoiceDialog<T> extends StatefulWidget {
 	final Widget title;
 	final Widget content;
-	final List<DialogOption<T>> options;
+	final List<DialogChoice<T>> choices;
 	final List<DialogAction> actions;
 
-	OptionsDialog(this.title, this.content, this.options, this.actions);
+	ChoiceDialog(this.title, this.content, this.choices, this.actions);
 
-	List<Widget> buildOptionsList(BuildContext context, List<DialogOption<T>> selectedOptions, Function setValue);
+	List<Widget> buildChoicesList(BuildContext context, List<DialogChoice<T>> selectedChoices, Function setValue);
 
-	Widget buildOptionDetail(BuildContext context, DialogOption option) {
+	Widget buildChoicesDetail(BuildContext context, DialogChoice choice) {
 		return Expanded(
 			child: Padding(
-				padding: EdgeInsets.only(left: (option.icon != null ? 15 : 0)), 
+				padding: EdgeInsets.only(left: (choice.icon != null ? 15 : 0)), 
 				child: Column(
 					crossAxisAlignment: CrossAxisAlignment.start,
 					children: [
-						buildTitle(context, option.title),
-						buildDescription(context, option.subtitle)
+						buildTitle(context, choice.title),
+						buildDescription(context, choice.subtitle)
 					].where((element) => element != null).toList(),
 				)
 			)
 		);
 	}
 
-	List<Widget> buildActions(BuildContext context, List<DialogOption<T>> selectedOptions);
+	List<Widget> buildActions(BuildContext context, List<DialogChoice<T>> selectedChoices);
 
 	Widget buildTitle(BuildContext context, Widget title) {
 		return buildTextWithStyle(title, Theme.of(context).textTheme.subtitle1);
@@ -61,18 +61,18 @@ abstract class OptionsDialog<T> extends StatefulWidget {
 		Navigator.of(context).pop();
 	}
 
-	confirmDialog(BuildContext context, List<DialogOption<T>> selectedOptions) {
-		if ((selectedOptions ?? []).isNotEmpty) {
-			Navigator.of(context).pop(selectedOptions.map<T>((e) => e.value(context)).toList());
+	confirmDialog(BuildContext context, List<DialogChoice<T>> selectedChoices) {
+		if ((selectedChoices ?? []).isNotEmpty) {
+			Navigator.of(context).pop(selectedChoices.map<T>((e) => e.value(context)).toList());
 		}
 	}
 
 	@override
-  	State<StatefulWidget> createState() => _OptionsDialogState<T>();
+  	State<StatefulWidget> createState() => _ChoiceDialogState<T>();
 }
 
-class _OptionsDialogState<T> extends State<OptionsDialog<T>> {
-	List<DialogOption<T>> selectedOptions = List();
+class _ChoiceDialogState<T> extends State<ChoiceDialog<T>> {
+	List<DialogChoice<T>> selectedChoices = List();
 
 	@override
 	Widget build(BuildContext context) {
@@ -84,12 +84,12 @@ class _OptionsDialogState<T> extends State<OptionsDialog<T>> {
 					crossAxisAlignment: CrossAxisAlignment.stretch,
 					mainAxisSize: MainAxisSize.min,
 					children: [widget.content]
-						..addAll(widget.buildOptionsList(context, selectedOptions, () => setState((){})))
+						..addAll(widget.buildChoicesList(context, selectedChoices, () => setState((){})))
 						..removeWhere((element) => element == null)
 				)
 			),
 			contentPadding: const EdgeInsets.only(top: 12),
-			actions: widget.buildActions(context, selectedOptions),
+			actions: widget.buildActions(context, selectedChoices),
 		);
 
 	}
