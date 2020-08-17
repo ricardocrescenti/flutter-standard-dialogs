@@ -10,44 +10,46 @@ class HomePage extends StatelessWidget {
 			centerTitle: true,
 			),
 			body: Center(
-				child: Padding(
-						padding: EdgeInsets.all(50),
-						child: Column(
-							mainAxisAlignment: MainAxisAlignment.center,
-							crossAxisAlignment: CrossAxisAlignment.stretch,
-							children: <Widget>[
-								
-								RaisedButton(
-									onPressed: () => _showBasicDialogOnlyTitle(context), 
-									child: Text('Basic Dialog (Only Title)')),
-								RaisedButton(
-									onPressed: () => _showBasicDialogTitleWithContent(context), 
-									child: Text('Basic Dialog (With Content)')),
-								RaisedButton(
-									onPressed: () => _showBasicDialogWithYesNoAction(context), 
-									child: Text('Basic Dialog (With Yes/No actions')),
-								
-								Divider(),
-								
-								RaisedButton(
-									onPressed: () => _showChoiceDialogButton(context), 
-									child: Text('Choice Dialog (Button)')),
-								RaisedButton(
-									onPressed: () => _showChoiceDialogCheckBox(context), 
-									child: Text('Choice Dialog (CheckBox)')),
-								RaisedButton(
-									onPressed: () => _showChoiceDialogRadioButton(context), 
-									child: Text('Choice Dialog (Radio)')),
-								
-								
-								// FlatButton(
-								//   onPressed: () => _showBasicDialog(context), 
-								//   child: Text('Basic Dialog')),
-								// FlatButton(
-								//   onPressed: () => _showBasicDialog(context), 
-								//   child: Text('Basic Dialog')),
-							],
-						)
+				child: SingleChildScrollView(
+					padding: EdgeInsets.all(50),
+					child: Column(
+						mainAxisAlignment: MainAxisAlignment.center,
+						crossAxisAlignment: CrossAxisAlignment.stretch,
+						children: <Widget>[
+							
+							Padding(
+								padding: EdgeInsets.symmetric(vertical: 10),
+								child: Text('ALERT DIALOGS', style: Theme.of(context).textTheme.bodyText1, textAlign: TextAlign.center)),
+
+							RaisedButton(
+								onPressed: () => _showBasicDialogOnlyTitle(context), 
+								child: Text('BASIC DIALOG (ONLY TITLE)')),
+							RaisedButton(
+								onPressed: () => _showBasicDialogTitleWithContent(context), 
+								child: Text('BASIC DIALOG (WITH CONTENT)')),
+							RaisedButton(
+								onPressed: () => _showBasicDialogWithYesNoAction(context), 
+								child: Text('BASIC DIALOG (YES/NO ACTIONS)')),
+							RaisedButton(
+								onPressed: () => _showBasicDialogWithCustomAction(context), 
+								child: Text('BASIC DIALOG (CUSTOM ACTIONS)')),
+							
+							Padding(
+								padding: EdgeInsets.symmetric(vertical: 10),
+								child: Text('OPTIONS DIALOGS', style: Theme.of(context).textTheme.bodyText1, textAlign: TextAlign.center)),
+							
+							RaisedButton(
+								onPressed: () => _showOptionDialogButton(context), 
+								child: Text('OPTIONS DIALOG (BUTTON)')),
+							RaisedButton(
+								onPressed: () => _showOptionsDialogCheckBox(context), 
+								child: Text('OPTIONS DIALOG (CHECKBOX)')),
+							RaisedButton(
+								onPressed: () => _showOptionsDialogRadioButton(context), 
+								child: Text('OPTIONS DIALOG (RADIO)')),
+
+						],
+					)
 				),
 			), // This trailing comma makes auto-formatting nicer for build methods.
 		);
@@ -79,12 +81,23 @@ class HomePage extends StatelessWidget {
       
   	}
 
-	_showChoiceDialogButton(BuildContext context) {
+  	_showBasicDialogWithCustomAction(BuildContext context) {
 
-		showOptionsDialog(context,
+		showBasicDialog<int>(context,
+			title: Text('How long do you want to share your location?'),
+			actions: [
+				DialogAction(title: Text('CANCEL'), value: (context) => 0),
+				DialogAction(title: Text('10 MINUTES'), value: (context) => 10),
+				DialogAction(title: Text('ALWAYS'), value: (context) => -1)
+			]);
+      
+  	}
+
+	_showOptionDialogButton(BuildContext context) async {
+
+		String result = await showButtonDialog<String>(context,
 			title: Text('Select user'),
 			//content: Text('Select the user you want to use for the operation.'),
-			choiceType: DialogChoiceType.button, 
 			options: [
 				DialogOption(
 					icon: Icon(Icons.person),
@@ -107,130 +120,65 @@ class HomePage extends StatelessWidget {
 					value: (context) => 'ricardo.crescenti'),
 			]);
 
+		if (result != null) {
+			showBasicDialog(context, title: Text('Selected user'), content: Text(result));
+		}
+
 	}
 
-	_showChoiceDialogCheckBox(BuildContext context) {
+	_showOptionsDialogCheckBox(BuildContext context) async {
 
-		showOptionsDialog(context, 
+		List<String> result = await showCheckBoxDialog<String>(context, 
 			title: Text('Select users'),
-			choiceType: DialogChoiceType.checkBok, 
 			options: [
 				DialogOption(
-					//icon: Icon(Icons.person),
+					icon: Icon(Icons.person),
 					title: Text('Ricardo Crescenti'),
 					subtitle: Text('ricardo.crescenti@gmail.com'),
 					value: (context) => 'ricardo.crescenti'),
 				DialogOption(
-					//icon: Icon(Icons.person),
+					icon: Icon(Icons.person),
 					title: Text('Ana Luiza Crescenti'),
 					subtitle: Text('ricardo.crescenti@gmail.com'),
 					value: (context) => 'analuiza.crescenti'),
 				DialogOption(
-					//icon: Icon(Icons.person),
+					icon: Icon(Icons.person),
 					title: Text('Luis Otávio Crescenti'),
 					subtitle: Text('ricardo.crescenti@gmail.com'),
 					value: (context) => 'luisotavio.crescenti'),
 			]);
 
+		if (result != null) {
+			showBasicDialog(context, title: Text('Selected users'), content: Text(result.reduce((value, element) => (value == null ? '' : value + ', ') + element)));
+		}
+
 	}
 
-	_showChoiceDialogRadioButton(BuildContext context) {
+	_showOptionsDialogRadioButton(BuildContext context) async {
 
-		showOptionsDialog(context, 
+		String result = await showRadioDialog<String>(context, 
 			title: Text('Select user'),
-			choiceType: DialogChoiceType.radio, 
 			options: [
 				DialogOption(
-					//icon: Icon(Icons.person),
-					title: Text('Ricardo Crescenti - Ricardo Crescenti - Ricardo Crescenti'),
+					icon: Icon(Icons.person),
+					title: Text('Ricardo Crescenti'),
 					subtitle: Text('ricardo.crescenti@gmail.com'),
 					value: (context) => 'ricardo.crescenti'),
 				DialogOption(
-					//icon: Icon(Icons.person),
+					icon: Icon(Icons.person),
 					title: Text('Ana Luiza Crescenti'),
 					subtitle: Text('ricardo.crescenti@gmail.com'),
 					value: (context) => 'analuiza.crescenti'),
 				DialogOption(
-					//icon: Icon(Icons.person),
-					title: Text('Ricardo Crescenti - Ricardo Crescenti - Ricardo Crescenti'),
-					subtitle: Text('ricardo.crescenti@gmail.com'),
-					value: (context) => 'ricardo.crescenti'),
-				DialogOption(
-					//icon: Icon(Icons.person),
-					title: Text('Ana Luiza Crescenti'),
-					subtitle: Text('ricardo.crescenti@gmail.com'),
-					value: (context) => 'analuiza.crescenti'),
-				DialogOption(
-					//icon: Icon(Icons.person),
-					title: Text('Ricardo Crescenti - Ricardo Crescenti - Ricardo Crescenti'),
-					subtitle: Text('ricardo.crescenti@gmail.com'),
-					value: (context) => 'ricardo.crescenti'),
-				DialogOption(
-					//icon: Icon(Icons.person),
-					title: Text('Ana Luiza Crescenti'),
-					subtitle: Text('ricardo.crescenti@gmail.com'),
-					value: (context) => 'analuiza.crescenti'),
-				DialogOption(
-					//icon: Icon(Icons.person),
-					title: Text('Ricardo Crescenti - Ricardo Crescenti - Ricardo Crescenti'),
-					subtitle: Text('ricardo.crescenti@gmail.com'),
-					value: (context) => 'ricardo.crescenti'),
-				DialogOption(
-					//icon: Icon(Icons.person),
-					title: Text('Ana Luiza Crescenti'),
-					subtitle: Text('ricardo.crescenti@gmail.com'),
-					value: (context) => 'analuiza.crescenti'),
-				DialogOption(
-					//icon: Icon(Icons.person),
-					title: Text('Ricardo Crescenti - Ricardo Crescenti - Ricardo Crescenti'),
-					subtitle: Text('ricardo.crescenti@gmail.com'),
-					value: (context) => 'ricardo.crescenti'),
-				DialogOption(
-					//icon: Icon(Icons.person),
-					title: Text('Ana Luiza Crescenti'),
-					subtitle: Text('ricardo.crescenti@gmail.com'),
-					value: (context) => 'analuiza.crescenti'),
-				DialogOption(
-					//icon: Icon(Icons.person),
-					title: Text('Ricardo Crescenti - Ricardo Crescenti - Ricardo Crescenti'),
-					subtitle: Text('ricardo.crescenti@gmail.com'),
-					value: (context) => 'ricardo.crescenti'),
-				DialogOption(
-					//icon: Icon(Icons.person),
-					title: Text('Ana Luiza Crescenti'),
-					subtitle: Text('ricardo.crescenti@gmail.com'),
-					value: (context) => 'analuiza.crescenti'),
-				DialogOption(
-					//icon: Icon(Icons.person),
-					title: Text('Ricardo Crescenti - Ricardo Crescenti - Ricardo Crescenti'),
-					subtitle: Text('ricardo.crescenti@gmail.com'),
-					value: (context) => 'ricardo.crescenti'),
-				DialogOption(
-					//icon: Icon(Icons.person),
-					title: Text('Ana Luiza Crescenti'),
-					subtitle: Text('ricardo.crescenti@gmail.com'),
-					value: (context) => 'analuiza.crescenti'),
-				DialogOption(
-					//icon: Icon(Icons.person),
-					title: Text('Ricardo Crescenti - Ricardo Crescenti - Ricardo Crescenti'),
-					subtitle: Text('ricardo.crescenti@gmail.com'),
-					value: (context) => 'ricardo.crescenti'),
-				DialogOption(
-					//icon: Icon(Icons.person),
-					title: Text('Ana Luiza Crescenti'),
-					subtitle: Text('ricardo.crescenti@gmail.com'),
-					value: (context) => 'analuiza.crescenti'),
-				DialogOption(
-					//icon: Icon(Icons.person),
-					title: Text('Ricardo Crescenti - Ricardo Crescenti - Ricardo Crescenti'),
-					subtitle: Text('ricardo.crescenti@gmail.com'),
-					value: (context) => 'ricardo.crescenti'),
-				DialogOption(
-					//icon: Icon(Icons.person),
-					title: Text('Ana Luiza Crescenti'),
-					subtitle: Text('ricardo.crescenti@gmail.com'),
-					value: (context) => 'analuiza.crescenti'),
+					icon: Icon(Icons.person),
+					title: Text('Luis Otavio Crescenti'),
+					subtitle: Text('luisotavio.crescenti@gmail.com'),
+					value: (context) => 'luisotavio.crescenti'),
 			]);
+
+		if (result != null) {
+			showBasicDialog(context, title: Text('Selected user'), content: Text(result));
+		}
 
 	}
 }

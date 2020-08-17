@@ -5,7 +5,7 @@ Future<T> showBasicDialog<T>(BuildContext context, {
 	@required Widget title, 
 	Widget content, 
 	List<DialogAction<T>> actions, 
-	bool barrierDismissible = true,
+	bool barrierDismissible = false,
 	Color barrierColor,
 	bool useSafeArea = true,
 	bool useRootNavigator = true,

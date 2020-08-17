@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 
 class DialogAction<T> {
-	final Widget icon;
 	final Widget title;
 	final T Function(BuildContext context) value;
 
 	DialogAction({
-		this.icon,
 		@required this.title,
 		@required this.value
 	});
