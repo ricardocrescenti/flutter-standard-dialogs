@@ -5,3 +5,6 @@ export 'classes/choice_choice.dart';
 
 export 'dialogs/basic_dialog.dart';
 export 'dialogs/choice_dialog.dart';
+
+export 'localizations/localizations_enum.dart';
+export 'localizations/standard_dialogs_localizations.dart';

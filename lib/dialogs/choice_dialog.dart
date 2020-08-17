@@ -113,15 +113,15 @@ Future<List<T>> _showChoicesDialog<T>(BuildContext context, {
 
 			switch (choiceType) {
 				case DialogChoicesType.button: return ChoiceButtonDialog<T>(title, content, choices, [
-					DialogAction(title: cancelWidget ?? Text('CANCEL'), value: null)
+					DialogAction(title: cancelWidget ?? Text(StandardDialogsLocalizations.of(context)[DialogActionLocalizationsEnum.cancel]), value: null)
 				]);
 				case DialogChoicesType.checkBok: return ChoiceCheckBoxDialog<T>(title, content, choices, [
-					DialogAction(title: cancelWidget ?? Text('CANCEL'), value: null),
-					DialogAction(title: cancelWidget ?? Text('OK'), value: null),
+					DialogAction(title: cancelWidget ?? Text(StandardDialogsLocalizations.of(context)[DialogActionLocalizationsEnum.cancel]), value: null),
+					DialogAction(title: cancelWidget ?? Text(StandardDialogsLocalizations.of(context)[DialogActionLocalizationsEnum.ok]), value: null),
 				]);
 				default: return ChoiceRadioDialog<T>(title, content, choices, [
-					DialogAction(title: cancelWidget ?? Text('CANCEL'), value: null),
-					DialogAction(title: cancelWidget ?? Text('OK'), value: null),
+					DialogAction(title: cancelWidget ?? Text(StandardDialogsLocalizations.of(context)[DialogActionLocalizationsEnum.cancel]), value: null),
+					DialogAction(title: cancelWidget ?? Text(StandardDialogsLocalizations.of(context)[DialogActionLocalizationsEnum.ok]), value: null),
 				]);
 			}
 
