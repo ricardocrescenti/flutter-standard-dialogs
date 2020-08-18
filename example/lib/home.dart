@@ -47,6 +47,14 @@ class HomePage extends StatelessWidget {
 							RaisedButton(
 								onPressed: () => _showChoicesDialogRadioButton(context), 
 								child: Text('CHOICES DIALOG (RADIO)')),
+							
+							Padding(
+								padding: EdgeInsets.symmetric(vertical: 10),
+								child: Text('AWAIT DIALOG', style: Theme.of(context).textTheme.bodyText1, textAlign: TextAlign.center)),
+							
+							RaisedButton(
+								onPressed: () => _showAwaitDialog(context), 
+								child: Text('WAIT 5 SECONDS')),
 
 						],
 					)
@@ -179,6 +187,14 @@ class HomePage extends StatelessWidget {
 		if (result != null) {
 			showBasicDialog(context, title: Text('Selected user'), content: Text(result));
 		}
+
+	}
+
+	_showAwaitDialog(BuildContext context) async {
+
+		await showAwaitDialog<String>(context, 
+			message: Text('Creating user'),
+			function: (context) => Future.delayed(Duration(seconds: 5)));
 
 	}
 }
