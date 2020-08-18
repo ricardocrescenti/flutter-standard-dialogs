@@ -111,19 +111,28 @@ Future<List<T>> _showChoicesDialog<T>(BuildContext context, {
 		context: context, 
 		builder: (context) {
 
+			Widget child;
 			switch (choiceType) {
-				case DialogChoicesType.button: return ChoiceButtonDialog<T>(title, content, choices, [
-					DialogAction(title: cancelWidget ?? Text(StandardDialogsLocalizations.of(context)[DialogActionLocalizationsEnum.cancel]), value: null)
-				]);
-				case DialogChoicesType.checkBok: return ChoiceCheckBoxDialog<T>(title, content, choices, [
-					DialogAction(title: cancelWidget ?? Text(StandardDialogsLocalizations.of(context)[DialogActionLocalizationsEnum.cancel]), value: null),
-					DialogAction(title: cancelWidget ?? Text(StandardDialogsLocalizations.of(context)[DialogActionLocalizationsEnum.ok]), value: null),
-				]);
-				default: return ChoiceRadioDialog<T>(title, content, choices, [
-					DialogAction(title: cancelWidget ?? Text(StandardDialogsLocalizations.of(context)[DialogActionLocalizationsEnum.cancel]), value: null),
-					DialogAction(title: cancelWidget ?? Text(StandardDialogsLocalizations.of(context)[DialogActionLocalizationsEnum.ok]), value: null),
-				]);
+				case DialogChoicesType.button: child = ChoiceButtonDialog<T>(title, content, choices, [
+						DialogAction(title: cancelWidget ?? Text(StandardDialogsLocalizations.of(context)[DialogActionLocalizationsEnum.cancel]), value: null)
+					]);
+					break;
+				case DialogChoicesType.checkBok: child = ChoiceCheckBoxDialog<T>(title, content, choices, [
+						DialogAction(title: cancelWidget ?? Text(StandardDialogsLocalizations.of(context)[DialogActionLocalizationsEnum.cancel]), value: null),
+						DialogAction(title: cancelWidget ?? Text(StandardDialogsLocalizations.of(context)[DialogActionLocalizationsEnum.ok]), value: null),
+					]);
+					break;
+				default: child = ChoiceRadioDialog<T>(title, content, choices, [
+						DialogAction(title: cancelWidget ?? Text(StandardDialogsLocalizations.of(context)[DialogActionLocalizationsEnum.cancel]), value: null),
+						DialogAction(title: cancelWidget ?? Text(StandardDialogsLocalizations.of(context)[DialogActionLocalizationsEnum.ok]), value: null),
+					]);
+					break;
 			}
+
+			return WillPopScope(
+				onWillPop: () => Future.value(barrierDismissible),
+				child: child
+			);
 
 		},
 		barrierDismissible: barrierDismissible,

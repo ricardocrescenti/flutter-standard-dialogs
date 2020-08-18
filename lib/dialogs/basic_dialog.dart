@@ -15,12 +15,15 @@ Future<T> showBasicDialog<T>(BuildContext context, {
 		context: context, 
 		builder: (context) {
 
-			return AlertDialog(
-				title: title,
-				content: content,
-				actions: (actions ?? [DialogAction<T>(title: Text(StandardDialogsLocalizations.of(context)[DialogActionLocalizationsEnum.ok]), value: null,)]).map<FlatButton>((e) => FlatButton(
-					onPressed: () => e.performClick(context),
-					child: e.title)).toList(),
+			return WillPopScope(
+				onWillPop: () => Future.value(barrierDismissible),
+				child: AlertDialog(
+					title: title,
+					content: content,
+					actions: (actions ?? [DialogAction<T>(title: Text(StandardDialogsLocalizations.of(context)[DialogActionLocalizationsEnum.ok]), value: null,)]).map<FlatButton>((e) => FlatButton(
+						onPressed: () => e.performClick(context),
+						child: e.title)).toList(),
+				)
 			);
 
 		},
