@@ -63,7 +63,7 @@ abstract class ChoiceDialog<T> extends StatefulWidget {
 
 	confirmDialog(BuildContext context, List<DialogChoice<T>> selectedChoices) {
 		if ((selectedChoices ?? []).isNotEmpty) {
-			Navigator.of(context).pop(selectedChoices.map<T>((e) => e.value(context)).toList());
+			Navigator.of(context).pop(selectedChoices.map<T>((e) => e.value).toList());
 		}
 	}
 

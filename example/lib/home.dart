@@ -111,21 +111,21 @@ class HomePage extends StatelessWidget {
 					icon: Icon(Icons.person),
 					title: Text('Ricardo Crescenti'),
 					subtitle: Text('ricardo.crescenti@gmail.com'),
-					value: (context) => 'ricardo.crescenti'),
+					value: 'ricardo.crescenti'),
 				DialogChoice(
 					icon: Icon(Icons.person),
 					title: Text('Ana Luiza Crescenti'),
 					subtitle: Text('ricardo.crescenti@gmail.com'),
-					value: (context) => 'analuiza.crescenti'),
+					value: 'analuiza.crescenti'),
 				DialogChoice(
 					icon: Icon(Icons.person),
 					title: Text('Luis Otávio Crescenti'),
 					subtitle: Text('ricardo.crescenti@gmail.com'),
-					value: (context) => 'luisotavio.crescenti'),
+					value: 'luisotavio.crescenti'),
 				DialogChoice(
 					icon: Icon(Icons.add),
 					title: Text('Add new account'),
-					value: (context) => 'ricardo.crescenti'),
+					value: 'ricardo.crescenti'),
 			]);
 
 		if (result != null) {
@@ -143,17 +143,17 @@ class HomePage extends StatelessWidget {
 					icon: Icon(Icons.person),
 					title: Text('Ricardo Crescenti'),
 					subtitle: Text('ricardo.crescenti@gmail.com'),
-					value: (context) => 'ricardo.crescenti'),
+					value: 'ricardo.crescenti'),
 				DialogChoice(
 					icon: Icon(Icons.person),
 					title: Text('Ana Luiza Crescenti'),
 					subtitle: Text('ricardo.crescenti@gmail.com'),
-					value: (context) => 'analuiza.crescenti'),
+					value: 'analuiza.crescenti'),
 				DialogChoice(
 					icon: Icon(Icons.person),
 					title: Text('Luis Otávio Crescenti'),
 					subtitle: Text('ricardo.crescenti@gmail.com'),
-					value: (context) => 'luisotavio.crescenti'),
+					value: 'luisotavio.crescenti'),
 			]);
 
 		if (result != null) {
@@ -171,17 +171,17 @@ class HomePage extends StatelessWidget {
 					icon: Icon(Icons.person),
 					title: Text('Ricardo Crescenti'),
 					subtitle: Text('ricardo.crescenti@gmail.com'),
-					value: (context) => 'ricardo.crescenti'),
+					value: 'ricardo.crescenti'),
 				DialogChoice(
 					icon: Icon(Icons.person),
 					title: Text('Ana Luiza Crescenti'),
 					subtitle: Text('ricardo.crescenti@gmail.com'),
-					value: (context) => 'analuiza.crescenti'),
+					value: 'analuiza.crescenti'),
 				DialogChoice(
 					icon: Icon(Icons.person),
 					title: Text('Luis Otavio Crescenti'),
 					subtitle: Text('luisotavio.crescenti@gmail.com'),
-					value: (context) => 'luisotavio.crescenti'),
+					value: 'luisotavio.crescenti'),
 			]);
 
 		if (result != null) {
