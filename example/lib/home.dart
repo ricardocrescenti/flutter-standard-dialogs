@@ -192,9 +192,16 @@ class HomePage extends StatelessWidget {
 
 	_showAwaitDialog(BuildContext context) async {
 
-		await showAwaitDialog<String>(context, 
+		await showAwaitDialog<bool>(context, 
 			message: Text('Creating user'),
-			function: (context) => Future.delayed(Duration(seconds: 5)));
+			function: (context, updateMessage) async {
+				
+				await Future.delayed(Duration(seconds: 2));
+				updateMessage(Text('Creating permissions'));
+				await Future.delayed(Duration(seconds: 2));
+
+				return true;
+			});
 
 	}
 }
