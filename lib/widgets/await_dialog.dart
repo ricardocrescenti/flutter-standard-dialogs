@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class AwaitDialog<T> extends StatefulWidget {
   final Widget message;
-  final Future<T> Function(BuildContext context) function;
+  final Future<T> Function(BuildContext context, Function(Widget message) updateMessage) function;
 
   AwaitDialog(this.message, this.function);
 
@@ -11,14 +11,16 @@ class AwaitDialog<T> extends StatefulWidget {
 }
 
 class _AwaitDialogState<T> extends State<AwaitDialog<T>> {
+  Widget message;
 
   @override
   void initState() {
     super.initState();
+    this.message = widget.message;
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
 
-      widget.function(context)
+      widget.function(context, updateMessage)
           .then((onValue) => Navigator.of(context).pop(onValue))
           .catchError((onError) => Navigator.of(context).pop());
 
@@ -41,7 +43,7 @@ class _AwaitDialogState<T> extends State<AwaitDialog<T>> {
                 children: <Widget>[
                   CircularProgressIndicator(),
                   Padding(padding: EdgeInsets.all(10),),
-                  widget.message,
+                  this.message,
                 ],
               ),
             ),
@@ -49,5 +51,11 @@ class _AwaitDialogState<T> extends State<AwaitDialog<T>> {
         ],
       ),
     );
+  }
+
+  updateMessage(Widget message) {
+    setState(() {
+      this.message = message;
+    });
   }
 }

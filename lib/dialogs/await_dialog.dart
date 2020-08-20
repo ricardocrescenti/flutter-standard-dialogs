@@ -3,7 +3,7 @@ import 'package:standard_dialogs/widgets/await_dialog.dart';
 
 Future<T> showAwaitDialog<T>(BuildContext context, {
 	@required Widget message, 
-	Future<T> Function(BuildContext context) function,
+	Future<T> Function(BuildContext context, Function(Widget message) updateMessage) function,
 	Color barrierColor,
 	bool useSafeArea = true,
 	bool useRootNavigator = true,
