@@ -48,9 +48,9 @@ final result = await showBasicDialog<bool>(context,
 
 Screenshots of dialog examples
 
-<img src="https://raw.githubusercontent.com/ricardocrescenti/flutter-standard-dialogs/tree/master/example/assets/images/basic_dialog_title.jpg"  height = "400" alt="PieChart">
+<img src="https://github.com/ricardocrescenti/flutter-standard-dialogs/blob/master/example/assets/images/basic_dialog_title.jpg" height = "400">
 
-<img src="https://raw.githubusercontent.com/ricardocrescenti/flutter-standard-dialogs/tree/master/example/assets/images/basic_dialog_basic_content.jpg"  height = "400" alt="PieChart">
+<img src="https://github.com/ricardocrescenti/flutter-standard-dialogs/blob/master/example/assets/images/basic_dialog_basic_content.jpg" height = "400">
 
 ## Choices Dialogs
 
@@ -88,7 +88,7 @@ String result = await showChoicesButtonDialog<String>(context,
 
 Screenshot
 
-<img src="https://raw.githubusercontent.com/ricardocrescenti/flutter-standard-dialogs/tree/master/example/assets/images/choice_dialog_button.jpg"  height = "400" alt="PieChart">
+<img src="https://github.com/ricardocrescenti/flutter-standard-dialogs/blob/master/example/assets/images/choice_dialog_button.jpg" height = "400">
 
 Dialog example with radio button:
 
@@ -116,7 +116,7 @@ String result = await showChoicesRadioDialog<String>(context,
 
 Screenshot
 
-<img src="https://raw.githubusercontent.com/ricardocrescenti/flutter-standard-dialogs/tree/master/example/assets/images/choice_dialog_radio.jpg"  height = "400" alt="PieChart">
+<img src="https://github.com/ricardocrescenti/flutter-standard-dialogs/blob/master/example/assets/images/choice_dialog_radio.jpg" height = "400">
 
 Example of dialog with checkbox:
 
@@ -144,7 +144,7 @@ List<String> result = await showChoicesCheckBoxDialog<String>(context,
 
 Screenshot
 
-<img src="https://raw.githubusercontent.com/ricardocrescenti/flutter-standard-dialogs/tree/master/example/assets/images/choice_dialog_checkbox.jpg"  height = "400" alt="PieChart">
+<img src="https://github.com/ricardocrescenti/flutter-standard-dialogs/blob/master/example/assets/images/choice_dialog_checkbox.jpg" height = "400">
 
 ## Result Dialogs
 
@@ -165,7 +165,7 @@ await showSucessDialog(context,
 
 Screenshot
 
-<img src="https://raw.githubusercontent.com/ricardocrescenti/flutter-standard-dialogs/tree/master/example/assets/images/result_dialog_success.jpg"  height = "400" alt="PieChart">
+<img src="https://github.com/ricardocrescenti/flutter-standard-dialogs/blob/master/example/assets/images/result_dialog_success.jpg" height = "400">
 
 Example of warning dialog:
 
@@ -176,7 +176,7 @@ await showWarningDialog(context,
 
 Screenshot
 
-<img src="https://raw.githubusercontent.com/ricardocrescenti/flutter-standard-dialogs/tree/master/example/assets/images/result_dialog_warning.jpg"  height = "400" alt="PieChart">
+<img src="https://github.com/ricardocrescenti/flutter-standard-dialogs/blob/master/example/assets/images/result_dialog_warning.jpg" height = "400">
 
 Error dialog example:
 
@@ -187,7 +187,7 @@ await showErrorDialog(context,
 
 Screenshot
 
-<img src="https://raw.githubusercontent.com/ricardocrescenti/flutter-standard-dialogs/tree/master/example/assets/images/result_dialog_error.jpg"  height = "400" alt="PieChart">
+<img src="https://github.com/ricardocrescenti/flutter-standard-dialogs/blob/master/example/assets/images/result_dialog_error.jpg" height = "400">
 
 If you need to create your own result dialog, you can use the `showResultDialog` method.
 
@@ -214,4 +214,4 @@ await showAwaitDialog<bool>(context,
 
 Screenshot
 
-<img src="https://raw.githubusercontent.com/ricardocrescenti/flutter-standard-dialogs/tree/master/example/assets/images/await_dialog.gif"  height = "400" alt="PieChart">
+<img src="https://github.com/ricardocrescenti/flutter-standard-dialogs/blob/master/example/assets/images/await_dialog.gif" height = "400">
