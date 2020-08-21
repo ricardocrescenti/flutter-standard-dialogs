@@ -60,11 +60,11 @@ Screenshots of dialog examples
 
 <img src="https://github.com/ricardocrescenti/flutter-standard-dialogs/blob/master/example/assets/images/basic_dialog_title.jpg" height = "400">
 
-<img src="https://github.com/ricardocrescenti/flutter-standard-dialogs/blob/master/example/assets/images/basic_dialog_basic_content.jpg" height = "400">
+<img src="https://github.com/ricardocrescenti/flutter-standard-dialogs/blob/master/example/assets/images/basic_dialog_content.jpg" height = "400">
 
-<img src="https://github.com/ricardocrescenti/flutter-standard-dialogs/blob/master/example/assets/images/basic_dialog_basic_yes_no.jpg" height = "400">
+<img src="https://github.com/ricardocrescenti/flutter-standard-dialogs/blob/master/example/assets/images/basic_dialog_yes_no.jpg" height = "400">
 
-<img src="https://github.com/ricardocrescenti/flutter-standard-dialogs/blob/master/example/assets/images/basic_dialog_basic_custom_actions.jpg" height = "400">
+<img src="https://github.com/ricardocrescenti/flutter-standard-dialogs/blob/master/example/assets/images/basic_dialog_custom_actions.jpg" height = "400">
 
 ## Choices Dialogs
 
