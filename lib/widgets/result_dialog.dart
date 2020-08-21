@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:standard_dialogs/standard_dialogs.dart';
 
+/// Standard widget used by the methods [showSuccessDialog], [showWarningDialog], 
+/// [showErrorDialog] and [showResultDialog].
 class ResultDialog extends StatelessWidget {
 	final Color backgroundColor;
 	final Color textColor;

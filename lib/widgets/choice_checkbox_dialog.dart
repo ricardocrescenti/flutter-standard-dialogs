@@ -3,6 +3,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:standard_dialogs/standard_dialogs.dart';
 import 'package:standard_dialogs/widgets/choice_dialog.dart';
 
+/// Standard widget used by the [showChoicesCheckBoxDialog] method.
 class ChoiceCheckBoxDialog<T> extends ChoiceDialog<T> {
 	ChoiceCheckBoxDialog(
 		Widget title, 

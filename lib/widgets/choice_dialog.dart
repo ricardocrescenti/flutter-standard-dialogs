@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:standard_dialogs/standard_dialogs.dart';
 
+/// Abstract widget used to set up the choices dialog
 abstract class ChoiceDialog<T> extends StatefulWidget {
 	final Widget title;
 	final Widget content;

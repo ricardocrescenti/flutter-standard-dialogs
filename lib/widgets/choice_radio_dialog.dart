@@ -3,6 +3,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:standard_dialogs/standard_dialogs.dart';
 import 'package:standard_dialogs/widgets/choice_dialog.dart';
 
+/// Standard widget used by the [showChoicesRadioDialog] method.
 class ChoiceRadioDialog<T> extends ChoiceDialog<T> {
 	ChoiceRadioDialog(
 		Widget title, 

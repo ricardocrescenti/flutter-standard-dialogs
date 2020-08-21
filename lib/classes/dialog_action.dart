@@ -50,12 +50,8 @@ class DialogAction<T> {
 
 	}
 
-	static List<DialogAction<DialogResult>> ok(BuildContext context) {
-		return [
-			DialogAction(title: Text(StandardDialogsLocalizations.of(context)[DialogResult.ok]), action: (context) => DialogResult.ok),
-		];
-	}
-
+	/// Returns a list of [DialogAction] with returns of type [DialogResult.ok]
+	/// and [DialogResult.cancel] to be used in the [showBasicDialog] method.
 	static List<DialogAction<DialogResult>> okCancel(BuildContext context) {
 		return [
 			DialogAction(title: Text(StandardDialogsLocalizations.of(context)[DialogResult.ok]), action: (context) => DialogResult.ok),
@@ -63,6 +59,9 @@ class DialogAction<T> {
 		];
 	}
 
+	/// Returns a list of [DialogAction] with returns of type [DialogResult.abort],
+	/// [DialogResult.retry], and [DialogResult.ignore] to be used in the 
+	/// [showBasicDialog] method.
 	static List<DialogAction<DialogResult>> abortRetryIgnore(BuildContext context) {
 		return [
 			DialogAction(title: Text(StandardDialogsLocalizations.of(context)[DialogResult.abort]), action: (context) => DialogResult.abort),
@@ -71,6 +70,9 @@ class DialogAction<T> {
 		];
 	}
 
+	/// Returns a list of [DialogAction] with returns of type [DialogResult.yes],
+	/// [DialogResult.no] and [DialogResult.cancel] to be used in the [showBasicDialog] 
+	/// method.
 	static List<DialogAction<DialogResult>> yesNoCancel(BuildContext context) {
 		return [
 			DialogAction(title: Text(StandardDialogsLocalizations.of(context)[DialogResult.yes]), action: (context) => DialogResult.yes),
@@ -79,6 +81,8 @@ class DialogAction<T> {
 		];
 	}
 
+	/// Returns a list of [DialogAction] with returns of type [DialogResult.yes]
+	/// and [DialogResult.no] to be used in the [showBasicDialog] method.
 	static List<DialogAction<DialogResult>> yesNo(BuildContext context) {
 		return [
 			DialogAction(title: Text(StandardDialogsLocalizations.of(context)[DialogResult.yes]), action: (context) => DialogResult.yes),
@@ -86,6 +90,8 @@ class DialogAction<T> {
 		];
 	}
 
+	/// Returns a list of [DialogAction] with returns of type [DialogResult.retry]
+	/// and [DialogResult.cancel] to be used in the [showBasicDialog] method.
 	static List<DialogAction<DialogResult>> retryCancel(BuildContext context) {
 		return [
 			DialogAction(title: Text(StandardDialogsLocalizations.of(context)[DialogResult.retry]), action: (context) => DialogResult.retry),
