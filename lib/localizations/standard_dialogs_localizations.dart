@@ -21,7 +21,7 @@ class StandardDialogsLocalizations extends SimpleLocalizations {
 		  DialogActionLocalizationsEnum.ok: 'OK',
 
 		  ResultDialogLocalizationsEnum.error: 'Error',
-		  ResultDialogLocalizationsEnum.sucess: 'Success',
+		  ResultDialogLocalizationsEnum.success: 'Success',
 		  ResultDialogLocalizationsEnum.warning: 'Warning',
 	  },
 	  'es': {
@@ -29,7 +29,7 @@ class StandardDialogsLocalizations extends SimpleLocalizations {
 		  DialogActionLocalizationsEnum.ok: 'OK',
 
 		  ResultDialogLocalizationsEnum.error: 'Error',
-		  ResultDialogLocalizationsEnum.sucess: 'Éxito',
+		  ResultDialogLocalizationsEnum.success: 'Éxito',
 		  ResultDialogLocalizationsEnum.warning: 'Advertencia',
 	  },
 	  'pt': {
@@ -37,7 +37,7 @@ class StandardDialogsLocalizations extends SimpleLocalizations {
 		  DialogActionLocalizationsEnum.ok: 'OK',
 
 		  ResultDialogLocalizationsEnum.error: 'Erro',
-		  ResultDialogLocalizationsEnum.sucess: 'Sucesso',
+		  ResultDialogLocalizationsEnum.success: 'Sucesso',
 		  ResultDialogLocalizationsEnum.warning: 'Aviso',
 	  }
   };

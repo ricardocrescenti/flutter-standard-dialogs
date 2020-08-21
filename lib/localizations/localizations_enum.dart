@@ -1,2 +1,2 @@
 enum DialogActionLocalizationsEnum { cancel, ok }
-enum ResultDialogLocalizationsEnum { error, sucess, warning }
+enum ResultDialogLocalizationsEnum { error, success, warning }

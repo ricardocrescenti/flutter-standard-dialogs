@@ -155,7 +155,7 @@ There are three types of predefined result dialogs, which are the results of suc
 Example of successful dialog:
 
 ```dart
-await showSucessDialog(context, 
+await showSucsessDialog(context, 
    title: Text('User created'),
    content: Text('User created successfully'),
    action: DialogAction(

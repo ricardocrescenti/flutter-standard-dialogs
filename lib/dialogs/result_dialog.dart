@@ -43,7 +43,7 @@ Future<T> showSuccessDialog<T>(BuildContext context, {
 		backgroundColor: Colors.lightGreen[400],
 		textColor: Colors.white, 
 		icon: icon, 
-		title: (title ?? Text(StandardDialogsLocalizations.of(context)[ResultDialogLocalizationsEnum.sucess])),
+		title: (title ?? Text(StandardDialogsLocalizations.of(context)[ResultDialogLocalizationsEnum.success])),
 		content: content,
 		action: action,
 		barrierDismissible: barrierDismissible,
