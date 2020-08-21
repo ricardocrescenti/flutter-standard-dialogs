@@ -28,7 +28,7 @@ Future<T> showErrorDialog<T>(BuildContext context, {
 
 }
 
-Future<T> showSucessDialog<T>(BuildContext context, {
+Future<T> showSuccessDialog<T>(BuildContext context, {
 	Widget icon = const Icon(Icons.check_circle), 
 	@required Widget title,
 	Widget content, 

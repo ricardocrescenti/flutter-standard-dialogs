@@ -1,6 +1,6 @@
 name: standard_dialogs
 version: 1.0.0
-description: Package with standard dialogs ready to be used
+description: Package with standardized dialogues for use in your application or package.
 homepage: https://github.com/ricardocrescenti
 repository: https://github.com/ricardocrescenti/flutter_standard_dialogs
 issue_tracker: https://github.com/ricardocrescenti/flutter_standard_dialogs/issues

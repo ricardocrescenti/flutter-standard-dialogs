@@ -6,6 +6,7 @@ import 'package:standard_dialogs/widgets/choice_radio_dialog.dart';
 
 enum DialogChoicesType { button, checkBok, radio }
 
+/// 
 Future<T> showChoicesButtonDialog<T>(BuildContext context, {
 	Widget title, 
 	Widget content, 

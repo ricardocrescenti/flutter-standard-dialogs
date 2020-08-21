@@ -50,25 +50,25 @@ class HomePage extends StatelessWidget {
 							
 							Padding(
 								padding: EdgeInsets.symmetric(vertical: 10),
-								child: Text('AWAIT DIALOG', style: Theme.of(context).textTheme.bodyText1, textAlign: TextAlign.center)),
-							
-							RaisedButton(
-								onPressed: () => _showAwaitDialog(context), 
-								child: Text('WAIT 5 SECONDS')),
-							
-							Padding(
-								padding: EdgeInsets.symmetric(vertical: 10),
 								child: Text('RESULT DIALOGS', style: Theme.of(context).textTheme.bodyText1, textAlign: TextAlign.center)),
 							
 							RaisedButton(
-								onPressed: () => _showSucessDialog(context), 
-								child: Text('SUCESS')),
+								onPressed: () => _showSuccessDialog(context), 
+								child: Text('SUCCESS')),
 							RaisedButton(
 								onPressed: () => _showWarningDialog(context), 
 								child: Text('WARNING')),
 							RaisedButton(
 								onPressed: () => _showErrorDialog(context), 
 								child: Text('ERROR')),
+							
+							Padding(
+								padding: EdgeInsets.symmetric(vertical: 10),
+								child: Text('AWAIT DIALOG', style: Theme.of(context).textTheme.bodyText1, textAlign: TextAlign.center)),
+							
+							RaisedButton(
+								onPressed: () => _showAwaitDialog(context), 
+								child: Text('WAIT 5 SECONDS')),
 
 						],
 					)
@@ -129,17 +129,17 @@ class HomePage extends StatelessWidget {
 				DialogChoice(
 					icon: Icon(Icons.person),
 					title: Text('Ana Luiza Crescenti'),
-					subtitle: Text('ricardo.crescenti@gmail.com'),
+					subtitle: Text('analuiza.crescenti@gmail.com'),
 					value: 'analuiza.crescenti'),
 				DialogChoice(
 					icon: Icon(Icons.person),
 					title: Text('Luis Otávio Crescenti'),
-					subtitle: Text('ricardo.crescenti@gmail.com'),
+					subtitle: Text('luisotavio.crescenti@gmail.com'),
 					value: 'luisotavio.crescenti'),
 				DialogChoice(
 					icon: Icon(Icons.add),
 					title: Text('Add new account'),
-					value: 'ricardo.crescenti'),
+					value: ''),
 			]);
 
 		if (result != null) {
@@ -161,12 +161,12 @@ class HomePage extends StatelessWidget {
 				DialogChoice(
 					icon: Icon(Icons.person),
 					title: Text('Ana Luiza Crescenti'),
-					subtitle: Text('ricardo.crescenti@gmail.com'),
+					subtitle: Text('analuiza.crescenti@gmail.com'),
 					value: 'analuiza.crescenti'),
 				DialogChoice(
 					icon: Icon(Icons.person),
 					title: Text('Luis Otávio Crescenti'),
-					subtitle: Text('ricardo.crescenti@gmail.com'),
+					subtitle: Text('luisotavio.crescenti@gmail.com'),
 					value: 'luisotavio.crescenti'),
 			]);
 
@@ -189,7 +189,7 @@ class HomePage extends StatelessWidget {
 				DialogChoice(
 					icon: Icon(Icons.person),
 					title: Text('Ana Luiza Crescenti'),
-					subtitle: Text('ricardo.crescenti@gmail.com'),
+					subtitle: Text('analuiza.crescenti@gmail.com'),
 					value: 'analuiza.crescenti'),
 				DialogChoice(
 					icon: Icon(Icons.person),
@@ -204,24 +204,9 @@ class HomePage extends StatelessWidget {
 
 	}
 
-	_showAwaitDialog(BuildContext context) async {
+	_showSuccessDialog(BuildContext context) async {
 
-		await showAwaitDialog<bool>(context, 
-			message: Text('Creating user'),
-			function: (context, updateMessage) async {
-				
-				await Future.delayed(Duration(seconds: 2));
-				updateMessage(Text('Creating permissions'));
-				await Future.delayed(Duration(seconds: 2));
-
-				return true;
-			});
-
-	}
-
-	_showSucessDialog(BuildContext context) async {
-
-		await showSucessDialog(context, 
+		await showSuccessDialog(context, 
 			title: Text('User created'),
 			content: Text('User created successfully!'),
 			action: DialogAction(
@@ -242,6 +227,21 @@ class HomePage extends StatelessWidget {
 
 		await showErrorDialog(context, 
 			title: Text('Error creating user'));
+
+	}
+
+	_showAwaitDialog(BuildContext context) async {
+
+		await showAwaitDialog<bool>(context, 
+			message: Text('Creating user'),
+			function: (context, updateMessage) async {
+				
+				await Future.delayed(Duration(seconds: 2));
+				updateMessage(Text('Creating permissions'));
+				await Future.delayed(Duration(seconds: 2));
+
+				return true;
+			});
 
 	}
 }
