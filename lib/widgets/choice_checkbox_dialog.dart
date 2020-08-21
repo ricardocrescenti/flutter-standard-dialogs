@@ -21,16 +21,19 @@ class ChoiceCheckBoxDialog<T> extends ChoiceDialog<T> {
 				}
 				setState();
 			},
-			child: Row(
-				mainAxisAlignment: MainAxisAlignment.start,
-				children: [
-					Checkbox(
-						value: selectedChoices.contains(e),
-						onChanged: null,
-					),
-					e.icon, 
-					buildChoicesDetail(context, e)
-				].where((element) => element != null).toList()
+			child: Padding(
+				padding: const EdgeInsets.only(left: 10, right: 24),	
+				child: Row(
+					mainAxisAlignment: MainAxisAlignment.start,
+					children: [
+						Checkbox(
+							value: selectedChoices.contains(e),
+							onChanged: null,
+						),
+						e.icon, 
+						buildChoicesDetail(context, e)
+					].where((element) => element != null).toList()
+				)
 			)
 		)).toList();
 	}

@@ -19,17 +19,20 @@ class ChoiceRadioDialog<T> extends ChoiceDialog<T> {
 					..add(e);
 				setState();
 			},
-			child: Row(
-				mainAxisAlignment: MainAxisAlignment.start,
-				children: [
-					Radio<DialogChoice<T>>(
-						value: e,
-						groupValue: (selectedChoices.isEmpty ? null : selectedChoices.first),
-						onChanged: null,
-					),
-					e.icon, 
-					buildChoicesDetail(context, e)
-				].where((element) => element != null).toList()
+			child: Padding(
+				padding: const EdgeInsets.only(left: 10, right: 24),	
+				child: Row(
+					mainAxisAlignment: MainAxisAlignment.start,
+					children: [
+						Radio<DialogChoice<T>>(
+							value: e,
+							groupValue: (selectedChoices.isEmpty ? null : selectedChoices.first),
+							onChanged: null,
+						),
+						e.icon, 
+						buildChoicesDetail(context, e)
+					].where((element) => element != null).toList()
+				)
 			)
 		)).toList();
 	}
