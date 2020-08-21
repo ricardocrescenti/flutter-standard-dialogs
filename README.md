@@ -7,7 +7,7 @@ Package with standardized dialogues ready to use.
 - **[Basic Dialogs](##basic-dialogs)**
 - **[Choices Dialogs](#choices-dialogs)**
 - **[Result Dialogs](#result-dialogs)**
-- **[Await Dialogs](#await-dialogs)**
+- **[Await Dialog](#await-dialog)**
 
 ## Introduction
 
