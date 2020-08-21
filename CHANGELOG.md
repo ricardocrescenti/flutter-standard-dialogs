@@ -1,3 +1,8 @@
-## [0.0.1] - TODO: Add release date.
+## [1.0.0+1]
 
-* TODO: Describe initial release.
+* Adjust in the readme.
+* Adjust the path of the images because I was giving `Cross-Origin Read Blocking (CORB)` error when viewing the documentation.
+
+## [1.0.0]
+
+* Initial package version
