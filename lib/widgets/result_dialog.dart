@@ -65,14 +65,20 @@ class ResultDialog extends StatelessWidget {
 				children: [
 					Padding(
 						padding: EdgeInsets.only(bottom: 10),	
-						child: IconTheme.merge(
-							data: IconThemeData(size: 70, color: Colors.white), 
-							child: this.icon)
+						child: (icon is Icon 
+							? IconTheme.merge(
+								data: IconThemeData(size: 70, color: textColor), 
+								child: icon)
+							: icon
+						)
 					),
-					AnimatedDefaultTextStyle(
-						style: (title as Text).style ?? Theme.of(context).textTheme.headline6.copyWith(color: Colors.white),
-						duration: kThemeChangeDuration,
-						child: title)
+					(title is Text 
+						? AnimatedDefaultTextStyle(
+							style: (title as Text).style ?? Theme.of(context).textTheme.headline6.copyWith(color: textColor),
+							duration: kThemeChangeDuration,
+							child: title)
+						: title
+					)
 				],
 			),
 		);
@@ -85,11 +91,14 @@ class ResultDialog extends StatelessWidget {
 
 		return Container(
 			padding: const EdgeInsets.fromLTRB(24, 20, 24, 0),
-			child: AnimatedDefaultTextStyle(
-				style: (content as Text).style ?? Theme.of(context).textTheme.subtitle1,
-				duration: kThemeChangeDuration,
-				textAlign: (content as Text).textAlign ?? TextAlign.center,
-				child: this.content),
+			child: (content is Text 
+				? AnimatedDefaultTextStyle(
+					style: (content as Text).style ?? Theme.of(context).textTheme.subtitle1,
+					duration: kThemeChangeDuration,
+					textAlign: (content as Text).textAlign ?? TextAlign.center,
+					child: this.content)
+				: content
+			),
 		);
 	}
 
@@ -100,7 +109,10 @@ class ResultDialog extends StatelessWidget {
 				mainAxisAlignment: MainAxisAlignment.center,
 				children: [
 					RaisedButton(
-						child: action.title,
+						child: Padding(
+							padding: EdgeInsets.symmetric(horizontal: 25),
+							child: action.title
+						),
 						color: backgroundColor,
 						textColor: textColor,
 						onPressed: () => action.performClick(context),
