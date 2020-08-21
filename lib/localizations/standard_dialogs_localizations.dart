@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:simple_localization/simple_localization.dart';
+import 'package:standard_dialogs/classes/dialog_result.dart';
 import 'package:standard_dialogs/localizations/localizations_enum.dart';
 
 class StandardDialogsLocalizations extends SimpleLocalizations {
@@ -17,24 +18,39 @@ class StandardDialogsLocalizations extends SimpleLocalizations {
   @override
   Map<String, Map<dynamic, String>> get localizedValues => {
 	  'en': {
-		  DialogActionLocalizationsEnum.cancel: 'Cancel',
-		  DialogActionLocalizationsEnum.ok: 'OK',
+		  DialogResult.abort: 'Abort',
+		  DialogResult.cancel: 'Cancel',
+		  DialogResult.ignore: 'Ignore',
+		  DialogResult.no: 'No',
+		  DialogResult.ok: 'OK',
+		  DialogResult.retry: 'Retry',
+		  DialogResult.yes: 'Yes',
 
 		  ResultDialogLocalizationsEnum.error: 'Error',
 		  ResultDialogLocalizationsEnum.success: 'Success',
 		  ResultDialogLocalizationsEnum.warning: 'Warning',
 	  },
 	  'es': {
-		  DialogActionLocalizationsEnum.cancel: 'Cancelar',
-		  DialogActionLocalizationsEnum.ok: 'OK',
+			DialogResult.abort: 'Abortar',
+			DialogResult.cancel: 'Cancelar',
+			DialogResult.ignore: 'Ignorar',
+			DialogResult.no: 'No',
+			DialogResult.ok: 'OK',
+			DialogResult.retry: 'Tentar Rever',
+			DialogResult.yes: 'Si',
 
 		  ResultDialogLocalizationsEnum.error: 'Error',
 		  ResultDialogLocalizationsEnum.success: 'Éxito',
 		  ResultDialogLocalizationsEnum.warning: 'Advertencia',
 	  },
 	  'pt': {
-		  DialogActionLocalizationsEnum.cancel: 'Cancelar',
-		  DialogActionLocalizationsEnum.ok: 'OK',
+			DialogResult.abort: 'Abortar',
+			DialogResult.cancel: 'Cancelar',
+			DialogResult.ignore: 'Ignorar',
+			DialogResult.no: 'Não',
+			DialogResult.ok: 'OK',
+			DialogResult.retry: 'Tentar novamente',
+			DialogResult.yes: 'Sim',
 
 		  ResultDialogLocalizationsEnum.error: 'Erro',
 		  ResultDialogLocalizationsEnum.success: 'Sucesso',

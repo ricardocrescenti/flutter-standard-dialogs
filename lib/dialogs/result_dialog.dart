@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:standard_dialogs/standard_dialogs.dart';
 import 'package:standard_dialogs/widgets/result_dialog.dart';
 
+/// 
 Future<T> showErrorDialog<T>(BuildContext context, {
 	Widget icon = const Icon(Icons.error), 
 	@required Widget title, 
@@ -28,6 +29,7 @@ Future<T> showErrorDialog<T>(BuildContext context, {
 
 }
 
+/// 
 Future<T> showSuccessDialog<T>(BuildContext context, {
 	Widget icon = const Icon(Icons.check_circle), 
 	@required Widget title,
@@ -54,6 +56,7 @@ Future<T> showSuccessDialog<T>(BuildContext context, {
 
 }
 
+/// 
 Future<T> showWarningDialog<T>(BuildContext context, {
 	Widget icon = const Icon(Icons.warning), 
 	@required Widget title, 
@@ -80,6 +83,7 @@ Future<T> showWarningDialog<T>(BuildContext context, {
 
 }
 
+/// 
 Future<T> showResultDialog<T>(BuildContext context, {
 	@required Color backgroundColor,
 	@required Color textColor,
@@ -106,8 +110,8 @@ Future<T> showResultDialog<T>(BuildContext context, {
 					title: title,
 					content: content,
 					action: (action ?? DialogAction<T>(
-						title: Text(StandardDialogsLocalizations.of(context)[DialogActionLocalizationsEnum.ok]), 
-						value: null))
+						title: Text(StandardDialogsLocalizations.of(context)[DialogResult.ok]), 
+						action: null))
 				)
 			);
 

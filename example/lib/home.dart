@@ -94,23 +94,22 @@ class HomePage extends StatelessWidget {
 
   	_showBasicDialogWithYesNoAction(BuildContext context) {
 
-		showBasicDialog<bool>(context,
+		final result = showBasicDialog<DialogResult>(context,
 			title: Text('Do you want to activate your location?'),
-			actions: [
-				DialogAction(title: Text('NO'), value: (context) => false),
-				DialogAction(title: Text('YES'), value: (context) => true)
-			]);
+			actions: DialogAction.yesNo(context));
+		print(result.toString());
       
   	}
 
   	_showBasicDialogWithCustomAction(BuildContext context) {
 
 		showBasicDialog<int>(context,
-			title: Text('How long do you want to share your location?'),
+			title: Text('Share location'),
+			content: Text('How long do you want to share your location?'),
 			actions: [
-				DialogAction(title: Text('CANCEL'), value: (context) => 0),
-				DialogAction(title: Text('10 MINUTES'), value: (context) => 10),
-				DialogAction(title: Text('ALWAYS'), value: (context) => -1)
+				DialogAction(title: Text('Always'), action: (context) => -1),
+				DialogAction(title: Text('10 minutes'), action: (context) => 10),
+				DialogAction(title: Text('Cancel'), action: (context) => 0),
 			]);
       
   	}
@@ -211,7 +210,7 @@ class HomePage extends StatelessWidget {
 			content: Text('User created successfully!'),
 			action: DialogAction(
 				title: Text('Get Started'),
-				value: null)
+				action: null)
 			);
 
 	}

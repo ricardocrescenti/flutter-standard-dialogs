@@ -38,10 +38,10 @@ class ChoiceRadioDialog<T> extends ChoiceDialog<T> {
 	List<Widget> buildActions(BuildContext context, List<DialogChoice<T>> selectedChoices) {
 		return [
 			FlatButton(
-				onPressed: () => cancelDialog(context), 
+				onPressed: () => confirmDialog(context, selectedChoices), 
 				child: actions[0].title),
 			FlatButton(
-				onPressed: () => confirmDialog(context, selectedChoices), 
+				onPressed: () => cancelDialog(context), 
 				child: actions[1].title)
 		];
 	}

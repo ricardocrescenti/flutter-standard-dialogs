@@ -40,9 +40,19 @@ Example of using basic dialogues.
 final result = await showBasicDialog<bool>(context,
    title: Text('Basic dialog example'),
    content: Text('Content of the dialogue, here you can explain in detail the reason for the dialogue'),
+   actions: DialogAction.yesNo(context));
+```
+
+Example of using basic dialogs with custom buttons.
+
+```dart
+final result = await showBasicDialog<bool>(context,
+   title: Text('Share location'),
+   content: Text('How long do you want to share your location?'),
    actions: [
-      DialogAction(title: Text('NO'), value: (context) => false),
-      DialogAction(title: Text('YES'), value: (context) => true)
+      DialogAction(title: Text('Always'), action: (context) => -1),
+      DialogAction(title: Text('10 minutes'), action: (context) => 10),
+      DialogAction(title: Text('Cancel'), action: (context) => 0),
    ]);
 ```
 
@@ -51,6 +61,10 @@ Screenshots of dialog examples
 <img src="https://github.com/ricardocrescenti/flutter-standard-dialogs/blob/master/example/assets/images/basic_dialog_title.jpg" height = "400">
 
 <img src="https://github.com/ricardocrescenti/flutter-standard-dialogs/blob/master/example/assets/images/basic_dialog_basic_content.jpg" height = "400">
+
+<img src="https://github.com/ricardocrescenti/flutter-standard-dialogs/blob/master/example/assets/images/basic_dialog_basic_yes_no.jpg" height = "400">
+
+<img src="https://github.com/ricardocrescenti/flutter-standard-dialogs/blob/master/example/assets/images/basic_dialog_basic_custom_actions.jpg" height = "400">
 
 ## Choices Dialogs
 

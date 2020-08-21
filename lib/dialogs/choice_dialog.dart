@@ -35,6 +35,7 @@ Future<T> showChoicesButtonDialog<T>(BuildContext context, {
 	return (result != null && result.isNotEmpty ? result[0] : null);
 }
 
+/// 
 Future<T> showChoicesRadioDialog<T>(BuildContext context, {
 	Widget title, 
 	Widget content, 
@@ -54,7 +55,7 @@ Future<T> showChoicesRadioDialog<T>(BuildContext context, {
 		choiceType: DialogChoicesType.radio,
 		choices: choices, 
 		cancelWidget: cancelWidget,
-		confirmWidget: confirmWidget,
+		okWidget: confirmWidget,
 		barrierDismissible: barrierDismissible,
 		barrierColor: barrierColor,
 		useSafeArea: useSafeArea,
@@ -65,6 +66,7 @@ Future<T> showChoicesRadioDialog<T>(BuildContext context, {
 	return (result != null && result.isNotEmpty ? result[0] : null);
 }
 
+/// 
 Future<List<T>> showChoicesCheckBoxDialog<T>(BuildContext context, {
 	Widget title, 
 	Widget content, 
@@ -84,7 +86,7 @@ Future<List<T>> showChoicesCheckBoxDialog<T>(BuildContext context, {
 		choiceType: DialogChoicesType.checkBok,
 		choices: choices, 
 		cancelWidget: cancelWidget,
-		confirmWidget: confirmWidget,
+		okWidget: confirmWidget,
 		barrierDismissible: barrierDismissible,
 		barrierColor: barrierColor,
 		useSafeArea: useSafeArea,
@@ -95,13 +97,14 @@ Future<List<T>> showChoicesCheckBoxDialog<T>(BuildContext context, {
 	return (result != null && result.isNotEmpty ? result : null);
 }
 
+/// 
 Future<List<T>> _showChoicesDialog<T>(BuildContext context, {
 	Widget title, 
 	Widget content, 
 	@required DialogChoicesType choiceType,
 	@required List<DialogChoice<T>> choices, 
 	Widget cancelWidget,
-	Widget confirmWidget,
+	Widget okWidget,
 	bool barrierDismissible = false,
 	Color barrierColor,
 	bool useSafeArea = true,
@@ -115,17 +118,17 @@ Future<List<T>> _showChoicesDialog<T>(BuildContext context, {
 			Widget child;
 			switch (choiceType) {
 				case DialogChoicesType.button: child = ChoiceButtonDialog<T>(title, content, choices, [
-						DialogAction(title: cancelWidget ?? Text(StandardDialogsLocalizations.of(context)[DialogActionLocalizationsEnum.cancel]), value: null)
+						DialogAction(title: cancelWidget ?? Text(StandardDialogsLocalizations.of(context)[DialogResult.cancel]), action: null)
 					]);
 					break;
 				case DialogChoicesType.checkBok: child = ChoiceCheckBoxDialog<T>(title, content, choices, [
-						DialogAction(title: cancelWidget ?? Text(StandardDialogsLocalizations.of(context)[DialogActionLocalizationsEnum.cancel]), value: null),
-						DialogAction(title: cancelWidget ?? Text(StandardDialogsLocalizations.of(context)[DialogActionLocalizationsEnum.ok]), value: null),
+						DialogAction(title: okWidget ?? Text(StandardDialogsLocalizations.of(context)[DialogResult.ok]), action: null),
+						DialogAction(title: cancelWidget ?? Text(StandardDialogsLocalizations.of(context)[DialogResult.cancel]), action: null),
 					]);
 					break;
 				default: child = ChoiceRadioDialog<T>(title, content, choices, [
-						DialogAction(title: cancelWidget ?? Text(StandardDialogsLocalizations.of(context)[DialogActionLocalizationsEnum.cancel]), value: null),
-						DialogAction(title: cancelWidget ?? Text(StandardDialogsLocalizations.of(context)[DialogActionLocalizationsEnum.ok]), value: null),
+						DialogAction(title: okWidget ?? Text(StandardDialogsLocalizations.of(context)[DialogResult.ok]), action: null),
+						DialogAction(title: cancelWidget ?? Text(StandardDialogsLocalizations.of(context)[DialogResult.cancel]), action: null),
 					]);
 					break;
 			}

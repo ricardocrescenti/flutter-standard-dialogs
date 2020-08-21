@@ -25,12 +25,12 @@ class DialogAction<T> {
 	
 	/// Function that must be executed when the button is clicked, the function
 	/// should return the value expected by the dialog.
-	final T Function(BuildContext context) value;
+	final T Function(BuildContext context) action;
 
 	/// Standard constructor of the [DialogAction] class
 	DialogAction({
 		@required this.title,
-		@required this.value
+		@required this.action
 	});
 
 	/// Execute the action of the button click.
@@ -39,14 +39,57 @@ class DialogAction<T> {
 	/// and after the dialog will be closed, returning the obtained value.
 	performClick(BuildContext context) async {
 
-		if (this.value == null) {
+		if (this.action == null) {
 			Navigator.of(context).pop();	
 		}
 
-		T result = (this.value != null ? await this.value(context) : null);
+		T result = (this.action != null ? await this.action(context) : null);
 		if (result != null) {
 			Navigator.of(context).pop(result);
 		}
 
+	}
+
+	static List<DialogAction<DialogResult>> ok(BuildContext context) {
+		return [
+			DialogAction(title: Text(StandardDialogsLocalizations.of(context)[DialogResult.ok]), action: (context) => DialogResult.ok),
+		];
+	}
+
+	static List<DialogAction<DialogResult>> okCancel(BuildContext context) {
+		return [
+			DialogAction(title: Text(StandardDialogsLocalizations.of(context)[DialogResult.ok]), action: (context) => DialogResult.ok),
+			DialogAction(title: Text(StandardDialogsLocalizations.of(context)[DialogResult.cancel]), action: (context) => DialogResult.cancel),
+		];
+	}
+
+	static List<DialogAction<DialogResult>> abortRetryIgnore(BuildContext context) {
+		return [
+			DialogAction(title: Text(StandardDialogsLocalizations.of(context)[DialogResult.abort]), action: (context) => DialogResult.abort),
+			DialogAction(title: Text(StandardDialogsLocalizations.of(context)[DialogResult.retry]), action: (context) => DialogResult.retry),
+			DialogAction(title: Text(StandardDialogsLocalizations.of(context)[DialogResult.ignore]), action: (context) => DialogResult.ignore),
+		];
+	}
+
+	static List<DialogAction<DialogResult>> yesNoCancel(BuildContext context) {
+		return [
+			DialogAction(title: Text(StandardDialogsLocalizations.of(context)[DialogResult.yes]), action: (context) => DialogResult.yes),
+			DialogAction(title: Text(StandardDialogsLocalizations.of(context)[DialogResult.no]), action: (context) => DialogResult.no),
+			DialogAction(title: Text(StandardDialogsLocalizations.of(context)[DialogResult.cancel]), action: (context) => DialogResult.cancel),
+		];
+	}
+
+	static List<DialogAction<DialogResult>> yesNo(BuildContext context) {
+		return [
+			DialogAction(title: Text(StandardDialogsLocalizations.of(context)[DialogResult.yes]), action: (context) => DialogResult.yes),
+			DialogAction(title: Text(StandardDialogsLocalizations.of(context)[DialogResult.no]), action: (context) => DialogResult.no)
+		];
+	}
+
+	static List<DialogAction<DialogResult>> retryCancel(BuildContext context) {
+		return [
+			DialogAction(title: Text(StandardDialogsLocalizations.of(context)[DialogResult.retry]), action: (context) => DialogResult.retry),
+			DialogAction(title: Text(StandardDialogsLocalizations.of(context)[DialogResult.cancel]), action: (context) => DialogResult.cancel)
+		];
 	}
 }
