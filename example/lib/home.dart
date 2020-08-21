@@ -55,6 +55,20 @@ class HomePage extends StatelessWidget {
 							RaisedButton(
 								onPressed: () => _showAwaitDialog(context), 
 								child: Text('WAIT 5 SECONDS')),
+							
+							Padding(
+								padding: EdgeInsets.symmetric(vertical: 10),
+								child: Text('RESULT DIALOGS', style: Theme.of(context).textTheme.bodyText1, textAlign: TextAlign.center)),
+							
+							RaisedButton(
+								onPressed: () => _showSucessDialog(context), 
+								child: Text('SUCESS')),
+							RaisedButton(
+								onPressed: () => _showWarningDialog(context), 
+								child: Text('WARNING')),
+							RaisedButton(
+								onPressed: () => _showErrorDialog(context), 
+								child: Text('ERROR')),
 
 						],
 					)
@@ -202,6 +216,32 @@ class HomePage extends StatelessWidget {
 
 				return true;
 			});
+
+	}
+
+	_showSucessDialog(BuildContext context) async {
+
+		await showSucessDialog(context, 
+			title: Text('User created'),
+			content: Text('User created successfully!'),
+			action: DialogAction(
+				title: Text('Get Started'),
+				value: null)
+			);
+
+	}
+
+	_showWarningDialog(BuildContext context) async {
+
+		await showWarningDialog(context, 
+			title: Text('User with pending issues'));
+
+	}
+
+	_showErrorDialog(BuildContext context) async {
+
+		await showErrorDialog(context, 
+			title: Text('Error creating user'));
 
 	}
 }
