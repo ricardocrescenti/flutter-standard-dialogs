@@ -13,6 +13,8 @@ Package with standardized dialogues ready to use.
 
 This package has several types of dialogs, which facilitate the display of data for the user, the types of dialogues available will be explained below.
 
+[<img src="https://lh3.googleusercontent.com/cjsqrWQKJQp9RFO7-hJ9AfpKzbUb_Y84vXfjlP0iRHBvladwAfXih984olktDhPnFqyZ0nu9A5jvFwOEQPXzv7hr3ce3QVsLN8kQ2Ao=s0">](https://play.google.com/store/apps/details?id=com.crescentiapps.standard_dialogs_example)
+
 ## How to install
 
 Add the dependency on `pubspec.yaml`. 
@@ -205,7 +207,7 @@ Screenshot
 
 If you need to create your own result dialog, you can use the `showResultDialog` method.
 
-## Await Dialogs
+## Await Dialog
 
 This type of dialogue is used for cases where you want to inform the user that something is being processed, when the process is finished the dialogue will be automatically closed.
 
