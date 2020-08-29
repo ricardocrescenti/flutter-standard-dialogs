@@ -8,6 +8,7 @@ Package with standardized dialogues ready to use.
 - **[Choices Dialogs](#choices-dialogs)**
 - **[Result Dialogs](#result-dialogs)**
 - **[Await Dialog](#await-dialog)**
+- **[Internationalization](#internationalization)**
 
 ## Introduction
 
@@ -231,3 +232,46 @@ await showAwaitDialog<bool>(context,
 Screenshot
 
 <img src="https://raw.githubusercontent.com/ricardocrescenti/flutter-standard-dialogs/master/example/assets/images/await_dialog.gif" height = "400">
+
+
+## Internationalization
+
+This package is internationalized for the languages listed below.
+
+- English
+- Spanish
+- Portuguese
+
+Internationalization will be used when the standard actions of the `DialogAction` class are used as listed below, and also in the radio dialogs.
+
+- `DialogAction.okCancel`
+- `DialogAction.abortRetryIgnore`
+- `DialogAction.yesNoCancel`
+- `DialogAction.yesNo`
+- `DialogAction.retryCancel`
+
+For dialogs to be displayed in your language, you will need to enter the `supportedLocales` property of `MaterialApp` with the languages supported by your application, and you will also need to add the `flutter_localizations` dependency in `pubspec.yaml`.
+
+See below how to add dependency.
+
+```yaml
+dependencies:
+  flutter_localizations:
+    sdk: flutter
+```
+
+See below for how to inform the languages supported in your application.
+
+```dart
+MaterialApp(
+  supportedLocales: [
+    Locale('en'),
+    Locale('es'),
+    Locale('pt')
+  ],
+  localizationsDelegates: [
+    GlobalMaterialLocalizations.delegate,
+    GlobalWidgetsLocalizations.delegate,
+  ],
+)
+```

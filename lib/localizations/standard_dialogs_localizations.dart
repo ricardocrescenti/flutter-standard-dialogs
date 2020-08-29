@@ -6,31 +6,38 @@ import 'package:standard_dialogs/classes/dialog_result.dart';
 import 'package:standard_dialogs/localizations/localizations_enum.dart';
 
 class StandardDialogsLocalizations extends SimpleLocalizations {
-  static StandardDialogsLocalizations of(BuildContext context) {
-    return SimpleLocalizations.of<StandardDialogsLocalizations>(context, (locale) => StandardDialogsLocalizations(locale));
-  }
+	static StandardDialogsLocalizations of(BuildContext context) {
+		return SimpleLocalizations.of<StandardDialogsLocalizations>(context, (locale) => StandardDialogsLocalizations(locale));
+	}
 
-  StandardDialogsLocalizations(Locale locale) : super(locale);
+	StandardDialogsLocalizations(Locale locale) : super(locale);
 
-  @override
-  Locale get defaultLocale => Locale('en');
+	@override
+	Locale get defaultLocale => Locale('en');
 
-  @override
-  Map<String, Map<dynamic, String>> get localizedValues => {
-	  'en': {
-		  DialogResult.abort: 'Abort',
-		  DialogResult.cancel: 'Cancel',
-		  DialogResult.ignore: 'Ignore',
-		  DialogResult.no: 'No',
-		  DialogResult.ok: 'OK',
-		  DialogResult.retry: 'Retry',
-		  DialogResult.yes: 'Yes',
+	@override
+	Iterable<Locale> get suportedLocales => [
+		Locale('en'),
+		Locale('es'),
+		Locale('pt')
+	];
 
-		  ResultDialogLocalizationsEnum.error: 'Error',
-		  ResultDialogLocalizationsEnum.success: 'Success',
-		  ResultDialogLocalizationsEnum.warning: 'Warning',
-	  },
-	  'es': {
+	@override
+	Map<String, Map<dynamic, String>> get localizedValues => {
+		'en': {
+			DialogResult.abort: 'Abort',
+			DialogResult.cancel: 'Cancel',
+			DialogResult.ignore: 'Ignore',
+			DialogResult.no: 'No',
+			DialogResult.ok: 'OK',
+			DialogResult.retry: 'Retry',
+			DialogResult.yes: 'Yes',
+
+			ResultDialogLocalizationsEnum.error: 'Error',
+			ResultDialogLocalizationsEnum.success: 'Success',
+			ResultDialogLocalizationsEnum.warning: 'Warning',
+		},
+		'es': {
 			DialogResult.abort: 'Abortar',
 			DialogResult.cancel: 'Cancelar',
 			DialogResult.ignore: 'Ignorar',
@@ -39,11 +46,11 @@ class StandardDialogsLocalizations extends SimpleLocalizations {
 			DialogResult.retry: 'Tentar Rever',
 			DialogResult.yes: 'Si',
 
-		  ResultDialogLocalizationsEnum.error: 'Error',
-		  ResultDialogLocalizationsEnum.success: 'Éxito',
-		  ResultDialogLocalizationsEnum.warning: 'Advertencia',
-	  },
-	  'pt': {
+			ResultDialogLocalizationsEnum.error: 'Error',
+			ResultDialogLocalizationsEnum.success: 'Éxito',
+			ResultDialogLocalizationsEnum.warning: 'Advertencia',
+		},
+		'pt': {
 			DialogResult.abort: 'Abortar',
 			DialogResult.cancel: 'Cancelar',
 			DialogResult.ignore: 'Ignorar',
@@ -52,17 +59,14 @@ class StandardDialogsLocalizations extends SimpleLocalizations {
 			DialogResult.retry: 'Tentar novamente',
 			DialogResult.yes: 'Sim',
 
-		  ResultDialogLocalizationsEnum.error: 'Erro',
-		  ResultDialogLocalizationsEnum.success: 'Sucesso',
-		  ResultDialogLocalizationsEnum.warning: 'Aviso',
-	  }
-  };
+			ResultDialogLocalizationsEnum.error: 'Erro',
+			ResultDialogLocalizationsEnum.success: 'Sucesso',
+			ResultDialogLocalizationsEnum.warning: 'Aviso',
+		}
+	};
 
-  @override
-  // TODO: implement suportedLocales
-  Iterable<Locale> get suportedLocales => [
-	  Locale('en'),
-	  Locale('es'),
-	  Locale('pt')
-  ];
+}
+
+class StandardDialogsLocalizationsDelegate extends SimpleLocalizationsDelegate<StandardDialogsLocalizations> {
+  StandardDialogsLocalizationsDelegate(StandardDialogsLocalizations Function(Locale locale) customLocalization) : super(customLocalization);
 }
