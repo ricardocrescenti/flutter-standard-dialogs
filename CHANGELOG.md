@@ -1,3 +1,13 @@
+## 1.1.0+1
+
+* Adjust in the readme.
+* Removed unnecessary await.
+* Removed unnecessary import.
+
+## 1.1.0
+
+* Added class to allow internationalization of the package
+
 ## 1.0.0+2
 
 * Removed unnecessary import.

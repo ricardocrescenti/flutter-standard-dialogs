@@ -43,7 +43,7 @@ class DialogAction<T> {
 			Navigator.of(context).pop();	
 		}
 
-		T result = (this.action != null ? await this.action(context) : null);
+		T result = (this.action != null ? this.action(context) : null);
 		if (result != null) {
 			Navigator.of(context).pop(result);
 		}

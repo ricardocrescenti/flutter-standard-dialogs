@@ -20,7 +20,7 @@ This package has several types of dialogs, which facilitate the display of data 
 
 Add the dependency on `pubspec.yaml`. 
 
-*Informing `^` at the beginning of the version, you will receive all updates that are made from version `2.0.0` up to the version before `3.0.0`.*
+*Informing `^` at the beginning of the version, you will receive all updates that are made from version `1.0.0` up to the version before `2.0.0`.*
 
 ```yaml
 dependencies:

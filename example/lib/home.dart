@@ -94,10 +94,9 @@ class HomePage extends StatelessWidget {
 
   	_showBasicDialogWithYesNoAction(BuildContext context) {
 
-		final result = showBasicDialog<DialogResult>(context,
+		showBasicDialog<DialogResult>(context,
 			title: Text('Do you want to activate your location?'),
 			actions: DialogAction.yesNo(context));
-		print(result.toString());
       
   	}
 
@@ -203,9 +202,9 @@ class HomePage extends StatelessWidget {
 
 	}
 
-	_showSuccessDialog(BuildContext context) async {
+	_showSuccessDialog(BuildContext context) {
 
-		await showSuccessDialog(context, 
+		showSuccessDialog(context, 
 			title: Text('User created'),
 			content: Text('User created successfully!'),
 			action: DialogAction(
@@ -215,23 +214,23 @@ class HomePage extends StatelessWidget {
 
 	}
 
-	_showWarningDialog(BuildContext context) async {
+	_showWarningDialog(BuildContext context) {
 
-		await showWarningDialog(context, 
+		showWarningDialog(context, 
 			title: Text('User with pending issues'));
 
 	}
 
-	_showErrorDialog(BuildContext context) async {
+	_showErrorDialog(BuildContext context) {
 
-		await showErrorDialog(context, 
+		showErrorDialog(context, 
 			title: Text('Error creating user'));
 
 	}
 
-	_showAwaitDialog(BuildContext context) async {
+	_showAwaitDialog(BuildContext context) {
 
-		await showAwaitDialog<bool>(context, 
+		showAwaitDialog<bool>(context, 
 			message: Text('Creating user'),
 			function: (context, updateMessage) async {
 				
