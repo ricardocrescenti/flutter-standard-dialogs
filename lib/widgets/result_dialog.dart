@@ -77,6 +77,7 @@ class ResultDialog extends StatelessWidget {
 					(title is Text 
 						? AnimatedDefaultTextStyle(
 							style: (title as Text).style ?? Theme.of(context).textTheme.headline6.copyWith(color: textColor),
+							textAlign: (title as Text).textAlign ?? TextAlign.center,
 							duration: kThemeChangeDuration,
 							child: title)
 						: title
