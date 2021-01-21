@@ -52,7 +52,7 @@ class _AwaitDialogState<T> extends State<AwaitDialog<T>> {
                 children: <Widget>[
                   CircularProgressIndicator(),
                   Padding(padding: EdgeInsets.all(10),),
-                  this.message,
+                  standardizeMessage(this.message),
                 ],
               ),
             ),
@@ -68,4 +68,23 @@ class _AwaitDialogState<T> extends State<AwaitDialog<T>> {
       this.message = message;
     });
   }
+
+  /// Applying the display patterns of the message listed in the dialog, this is
+  /// only done if the message is a 'Text'.
+	Widget standardizeMessage(Widget widget) {
+
+		if (widget is Text) {
+			widget = AnimatedDefaultTextStyle(
+				style: (widget as Text).style ?? Theme.of(context).textTheme.bodyText2,
+				duration: kThemeChangeDuration,
+        textAlign: TextAlign.center,
+				softWrap: (widget as Text).softWrap ?? true,
+				overflow: TextOverflow.fade,
+				child: widget,
+			);
+		}
+
+		return widget;
+		//return Expanded(child: widget);
+	}
 }

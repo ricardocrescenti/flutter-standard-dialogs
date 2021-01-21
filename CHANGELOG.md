@@ -1,3 +1,7 @@
+## 1.1.2
+
+* Adjustment made to leave the message of the `AwaitDialog` centered when the text has more than one line.
+
 ## 1.1.1
 
 * Adjustment made to leave the title of the `ResultDialog` centered when the text has more than one line.
