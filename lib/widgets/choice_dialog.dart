@@ -73,7 +73,7 @@ abstract class ChoiceDialog<T> extends StatefulWidget {
 }
 
 class _ChoiceDialogState<T> extends State<ChoiceDialog<T>> {
-	List<DialogChoice<T>> selectedChoices = List();
+	List<DialogChoice<T>> selectedChoices = [];
 
 	@override
 	Widget build(BuildContext context) {

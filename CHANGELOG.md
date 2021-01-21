@@ -1,3 +1,8 @@
+## 1.1.2+1
+
+* Adjusted List initialization according to documentation.
+* Removed unnecessary import
+
 ## 1.1.2
 
 * Adjustment made to leave the message of the `AwaitDialog` centered when the text has more than one line.
