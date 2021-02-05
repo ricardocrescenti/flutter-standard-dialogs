@@ -24,7 +24,7 @@ import 'package:standard_dialogs/standard_dialogs.dart';
 /// );
 /// ```
 Future<T> showBasicDialog<T>(BuildContext context, {
-	@required Widget title, 
+	Widget title, 
 	Widget content, 
 	List<DialogAction<T>> actions, 
 	bool barrierDismissible = false,
@@ -32,6 +32,8 @@ Future<T> showBasicDialog<T>(BuildContext context, {
 	bool useSafeArea = true,
 	bool useRootNavigator = true,
 	RouteSettings routeSettings}) async {
+
+	assert(title != null || content != null);
 
 	return showDialog<T>(
 		context: context, 

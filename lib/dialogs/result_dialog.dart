@@ -19,7 +19,7 @@ import 'package:standard_dialogs/widgets/result_dialog.dart';
 /// ```
 Future<T> showErrorDialog<T>(BuildContext context, {
 	Widget icon = const Icon(Icons.error), 
-	@required Widget title, 
+	Widget title, 
 	Widget content, 
 	DialogAction<T> action, 
 	bool barrierDismissible = false,
@@ -32,7 +32,7 @@ Future<T> showErrorDialog<T>(BuildContext context, {
 		backgroundColor: Colors.red[300], 
 		textColor: Colors.white,
 		icon: icon, 
-		title: (title ?? Text(StandardDialogsLocalizations.of(context)[ResultDialogLocalizationsEnum.error])),
+		title: title,// ?? Text(StandardDialogsLocalizations.of(context)[ResultDialogLocalizationsEnum.error])),
 		content: content,
 		action: action,
 		barrierDismissible: barrierDismissible,
@@ -66,7 +66,7 @@ Future<T> showErrorDialog<T>(BuildContext context, {
 /// ```
 Future<T> showSuccessDialog<T>(BuildContext context, {
 	Widget icon = const Icon(Icons.check_circle), 
-	@required Widget title,
+	Widget title,
 	Widget content, 
 	DialogAction<T> action, 
 	bool barrierDismissible = false,
@@ -79,7 +79,7 @@ Future<T> showSuccessDialog<T>(BuildContext context, {
 		backgroundColor: Colors.lightGreen[400],
 		textColor: Colors.white, 
 		icon: icon, 
-		title: (title ?? Text(StandardDialogsLocalizations.of(context)[ResultDialogLocalizationsEnum.success])),
+		title: title,// ?? Text(StandardDialogsLocalizations.of(context)[ResultDialogLocalizationsEnum.success])),
 		content: content,
 		action: action,
 		barrierDismissible: barrierDismissible,
@@ -106,7 +106,7 @@ Future<T> showSuccessDialog<T>(BuildContext context, {
 /// ```
 Future<T> showWarningDialog<T>(BuildContext context, {
 	Widget icon = const Icon(Icons.warning), 
-	@required Widget title, 
+	Widget title, 
 	Widget content, 
 	DialogAction<T> action, 
 	bool barrierDismissible = false,
@@ -119,7 +119,7 @@ Future<T> showWarningDialog<T>(BuildContext context, {
 		backgroundColor: Colors.orange[300], 
 		textColor: Colors.white,
 		icon: icon, 
-		title: (title ?? Text(StandardDialogsLocalizations.of(context)[ResultDialogLocalizationsEnum.warning])),
+		title: title,// ?? Text(StandardDialogsLocalizations.of(context)[ResultDialogLocalizationsEnum.warning])),
 		content: content,
 		action: action,
 		barrierDismissible: barrierDismissible,
@@ -138,7 +138,7 @@ Future<T> showResultDialog<T>(BuildContext context, {
 	@required Color backgroundColor,
 	@required Color textColor,
 	@required Widget icon, 
-	@required Widget title, 
+	title, 
 	Widget content, 
 	DialogAction<T> action, 
 	bool barrierDismissible = false,

@@ -1,3 +1,7 @@
+## 1.2.0
+
+* Set the `title` parameter in `showBasicDialog`, `showErrorDialog`, `showSuccessDialog`, `showWarningDialog` and `showResultDialog` as optional, now the `title` or `content` or both must be passed.
+
 ## 1.1.2+1
 
 * Adjusted List initialization according to documentation.

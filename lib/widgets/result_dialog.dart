@@ -16,10 +16,12 @@ class ResultDialog extends StatelessWidget {
 		@required this.backgroundColor,
 		@required this.textColor,
 		@required this.icon,
-		@required this.title,
+		this.title,
 		this.content,
 		this.action
-	});
+	}) {
+		assert(title != null || content != null);
+	}
 
 	@override
 	Widget build(BuildContext context) {
@@ -74,13 +76,15 @@ class ResultDialog extends StatelessWidget {
 							: icon
 						)
 					),
-					(title is Text 
-						? AnimatedDefaultTextStyle(
-							style: (title as Text).style ?? Theme.of(context).textTheme.headline6.copyWith(color: textColor),
-							textAlign: (title as Text).textAlign ?? TextAlign.center,
-							duration: kThemeChangeDuration,
-							child: title)
-						: title
+					(title != null 
+						? (title is Text 
+							? AnimatedDefaultTextStyle(
+								style: (title as Text).style ?? Theme.of(context).textTheme.headline6.copyWith(color: textColor),
+								textAlign: (title as Text).textAlign ?? TextAlign.center,
+								duration: kThemeChangeDuration,
+								child: title)
+							: title) 
+						: Container()
 					)
 				],
 			),
