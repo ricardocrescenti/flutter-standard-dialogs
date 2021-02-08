@@ -1,3 +1,8 @@
+## 1.2.1
+
+* Update in the file '.gitignore' not to comit 'pubspec.lock'
+* Deleted the file 'pubspec.lock'
+
 ## 1.2.0
 
 * Set the `title` parameter in `showBasicDialog`, `showErrorDialog`, `showSuccessDialog`, `showWarningDialog` and `showResultDialog` as optional, now the `title` or `content` or both must be passed.
