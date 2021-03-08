@@ -1,3 +1,7 @@
+## 1.2.2
+
+* Adjustments related to obsolete widgets and parameters
+
 ## 1.2.1
 
 * Update in the file '.gitignore' not to comit 'pubspec.lock'

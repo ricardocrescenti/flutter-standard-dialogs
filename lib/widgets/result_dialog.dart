@@ -115,17 +115,19 @@ class ResultDialog extends StatelessWidget {
 			child: Row(
 				mainAxisAlignment: MainAxisAlignment.center,
 				children: [
-					RaisedButton(
+					ElevatedButton(
 						child: Padding(
 							padding: EdgeInsets.symmetric(horizontal: 25),
 							child: action.title
 						),
-						color: backgroundColor,
-						textColor: textColor,
-						onPressed: () => action.performClick(context),
-						shape: RoundedRectangleBorder(
-							borderRadius: BorderRadius.circular(30.0)
-						)
+						style: ElevatedButton.styleFrom(
+							primary: backgroundColor,
+							onPrimary: textColor,
+							shape: RoundedRectangleBorder(
+								borderRadius: BorderRadius.circular(30.0)
+							)
+						),
+						onPressed: () => action.performClick(context)
 					)
 				],
 			),

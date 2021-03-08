@@ -29,7 +29,7 @@ class ChoiceButtonDialog<T> extends ChoiceDialog<T> {
 	@override
 	List<Widget> buildActions(BuildContext context, List<DialogChoice<T>> selectedChoices) {
 		return [
-			FlatButton(
+			TextButton(
 				onPressed: () => cancelDialog(context), 
 				child: actions[0].title)
 		];

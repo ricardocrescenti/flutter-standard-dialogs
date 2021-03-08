@@ -1,5 +1,5 @@
 name: standard_dialogs
-version: 1.2.1
+version: 1.2.2
 description: Package with standardized dialogues for use in your application or package.
 homepage: https://github.com/ricardocrescenti
 repository: https://github.com/ricardocrescenti/flutter_standard_dialogs
@@ -7,12 +7,11 @@ issue_tracker: https://github.com/ricardocrescenti/flutter_standard_dialogs/issu
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
-  flutter: ">=1.17.0 <2.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  simple_localization: ^1.0.0
+  simple_localization: ^1.2.2
 
 dev_dependencies:
   flutter_test:

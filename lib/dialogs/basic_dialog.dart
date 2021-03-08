@@ -44,7 +44,7 @@ Future<T> showBasicDialog<T>(BuildContext context, {
 				child: AlertDialog(
 					title: title,
 					content: content,
-					actions: (actions ?? [DialogAction<T>(title: Text(StandardDialogsLocalizations.of(context)[DialogResult.ok]), action: null,)]).map<FlatButton>((e) => FlatButton(
+					actions: (actions ?? [DialogAction<T>(title: Text(StandardDialogsLocalizations.of(context)[DialogResult.ok]), action: null,)]).map<TextButton>((e) => TextButton(
 						onPressed: () => e.performClick(context),
 						child: e.title)).toList(),
 				)

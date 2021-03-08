@@ -21,16 +21,16 @@ class HomePage extends StatelessWidget {
 								padding: EdgeInsets.symmetric(vertical: 10),
 								child: Text('ALERT DIALOGS', style: Theme.of(context).textTheme.bodyText1, textAlign: TextAlign.center)),
 
-							RaisedButton(
+							ElevatedButton(
 								onPressed: () => _showBasicDialogOnlyTitle(context), 
 								child: Text('BASIC DIALOG (ONLY TITLE)')),
-							RaisedButton(
+							ElevatedButton(
 								onPressed: () => _showBasicDialogTitleWithContent(context), 
 								child: Text('BASIC DIALOG (WITH CONTENT)')),
-							RaisedButton(
+							ElevatedButton(
 								onPressed: () => _showBasicDialogWithYesNoAction(context), 
 								child: Text('BASIC DIALOG (YES/NO ACTIONS)')),
-							RaisedButton(
+							ElevatedButton(
 								onPressed: () => _showBasicDialogWithCustomAction(context), 
 								child: Text('BASIC DIALOG (CUSTOM ACTIONS)')),
 							
@@ -38,13 +38,13 @@ class HomePage extends StatelessWidget {
 								padding: EdgeInsets.symmetric(vertical: 10),
 								child: Text('CHOICES DIALOGS', style: Theme.of(context).textTheme.bodyText1, textAlign: TextAlign.center)),
 							
-							RaisedButton(
+							ElevatedButton(
 								onPressed: () => _showChoicesDialogButton(context), 
 								child: Text('CHOICES DIALOG (BUTTON)')),
-							RaisedButton(
+							ElevatedButton(
 								onPressed: () => _showChoicesDialogCheckBox(context), 
 								child: Text('CHOICES DIALOG (CHECKBOX)')),
-							RaisedButton(
+							ElevatedButton(
 								onPressed: () => _showChoicesDialogRadioButton(context), 
 								child: Text('CHOICES DIALOG (RADIO)')),
 							
@@ -52,13 +52,13 @@ class HomePage extends StatelessWidget {
 								padding: EdgeInsets.symmetric(vertical: 10),
 								child: Text('RESULT DIALOGS', style: Theme.of(context).textTheme.bodyText1, textAlign: TextAlign.center)),
 							
-							RaisedButton(
+							ElevatedButton(
 								onPressed: () => _showSuccessDialog(context), 
 								child: Text('SUCCESS')),
-							RaisedButton(
+							ElevatedButton(
 								onPressed: () => _showWarningDialog(context), 
 								child: Text('WARNING')),
-							RaisedButton(
+							ElevatedButton(
 								onPressed: () => _showErrorDialog(context), 
 								child: Text('ERROR')),
 							
@@ -66,7 +66,7 @@ class HomePage extends StatelessWidget {
 								padding: EdgeInsets.symmetric(vertical: 10),
 								child: Text('AWAIT DIALOG', style: Theme.of(context).textTheme.bodyText1, textAlign: TextAlign.center)),
 							
-							RaisedButton(
+							ElevatedButton(
 								onPressed: () => _showAwaitDialog(context), 
 								child: Text('WAIT 5 SECONDS')),
 
