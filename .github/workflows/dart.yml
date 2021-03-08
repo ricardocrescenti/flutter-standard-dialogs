@@ -1,9 +1,13 @@
 name: Publish Package
 on:
   push:
+    paths-ignore:
+      - 'example/**'
     branches:
       - master
   pull_request:
+    paths-ignore:
+      - 'example/**'
     branches:
       - master
 jobs:
