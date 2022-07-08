@@ -36,13 +36,13 @@ import 'package:standard_dialogs/standard_dialogs.dart';
 class DialogChoice<T> {
 
 	/// Icon to be listed in the choice list.
-	final Widget icon;
+	final Widget? icon;
 	
 	/// Title of choice.
 	final Widget title;
 	
 	/// Subtitle of choice (or additional information).
-	final Widget subtitle;
+	final Widget? subtitle;
 	
 	/// Value to be returned when the choice is selected.
 	final T value;
@@ -50,8 +50,8 @@ class DialogChoice<T> {
 	/// Standard constructor of the [DialogChoice] class
 	DialogChoice({
 		this.icon,
-		@required this.title,
+		required this.title,
 		this.subtitle,
-		@required this.value
+		required this.value
 	});
 }

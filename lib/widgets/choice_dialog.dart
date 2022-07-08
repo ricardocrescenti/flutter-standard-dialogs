@@ -3,12 +3,13 @@ import 'package:standard_dialogs/standard_dialogs.dart';
 
 /// Abstract widget used to set up the choices dialog
 abstract class ChoiceDialog<T> extends StatefulWidget {
-	final Widget title;
-	final Widget content;
-	final List<DialogChoice<T>> choices;
-	final List<DialogAction> actions;
 
-	ChoiceDialog(this.title, this.content, this.choices, this.actions);
+	final Widget title;
+	final Widget? content;
+	final List<DialogChoice<T>> choices;
+	final List<DialogAction<T>> actions;
+
+	const ChoiceDialog(Key? key, this.title, this.content, this.choices, this.actions) : super(key: key);
 
 	List<Widget> buildChoicesList(BuildContext context, List<DialogChoice<T>> selectedChoices, Function setValue);
 
@@ -21,7 +22,7 @@ abstract class ChoiceDialog<T> extends StatefulWidget {
 					children: [
 						buildTitle(context, choice.title),
 						buildDescription(context, choice.subtitle)
-					].where((element) => element != null).toList(),
+					].where((element) => element != null).toList().cast(),
 				)
 			)
 		);
@@ -30,25 +31,29 @@ abstract class ChoiceDialog<T> extends StatefulWidget {
 	List<Widget> buildActions(BuildContext context, List<DialogChoice<T>> selectedChoices);
 
 	Widget buildTitle(BuildContext context, Widget title) {
-		return buildTextWithStyle(title, Theme.of(context).textTheme.subtitle1);
+		return buildTextWithStyle(title, Theme.of(context).textTheme.subtitle1!);
 	}
 
-	Widget buildDescription(BuildContext context, Widget description) {
-		return (description != null 
-			? Padding(
-				padding: EdgeInsetsDirectional.only(top: 2),
-				child: buildTextWithStyle(description, Theme.of(context).textTheme.subtitle2)
-			)
-			: null);
+	Widget? buildDescription(BuildContext context, Widget? description) {
+
+		if (description == null) {
+			return null;
+		}
+
+		return Padding(
+			padding: const EdgeInsetsDirectional.only(top: 2),
+			child: buildTextWithStyle(description, Theme.of(context).textTheme.subtitle2!)
+		);
+
 	}
 
 	Widget buildTextWithStyle(Widget widget, TextStyle textStyle) {
 
 		if (widget is Text) {
 			widget = AnimatedDefaultTextStyle(
-				style: (widget as Text).style ?? textStyle,
+				style: widget.style ?? textStyle,
 				duration: kThemeChangeDuration,
-				softWrap: (widget as Text).softWrap ?? true,
+				softWrap: widget.softWrap ?? true,
 				overflow: TextOverflow.fade,
 				child: widget,
 			);
@@ -56,15 +61,16 @@ abstract class ChoiceDialog<T> extends StatefulWidget {
 
 		return widget;
 		//return Expanded(child: widget);
+
 	}
 	
 	cancelDialog(BuildContext context) {
 		Navigator.of(context).pop();
 	}
 
-	confirmDialog(BuildContext context, List<DialogChoice<T>> selectedChoices) {
+	confirmDialog(BuildContext context, List<DialogChoice<T>>? selectedChoices) {
 		if ((selectedChoices ?? []).isNotEmpty) {
-			Navigator.of(context).pop(selectedChoices.map<T>((e) => e.value).toList());
+			Navigator.of(context).pop(selectedChoices!.map<T>((e) => e.value).toList());
 		}
 	}
 
@@ -73,6 +79,7 @@ abstract class ChoiceDialog<T> extends StatefulWidget {
 }
 
 class _ChoiceDialogState<T> extends State<ChoiceDialog<T>> {
+
 	List<DialogChoice<T>> selectedChoices = [];
 
 	@override
@@ -84,9 +91,10 @@ class _ChoiceDialogState<T> extends State<ChoiceDialog<T>> {
 				child: Column(
 					crossAxisAlignment: CrossAxisAlignment.stretch,
 					mainAxisSize: MainAxisSize.min,
-					children: [widget.content]
-						..addAll(widget.buildChoicesList(context, selectedChoices, () => setState((){})))
-						..removeWhere((element) => element == null)
+					children: [
+						(widget.content ?? Container()),
+						...widget.buildChoicesList(context, selectedChoices, () => setState((){}))
+					]..removeWhere((Widget? element) => element == null)
 				)
 			),
 			contentPadding: const EdgeInsets.only(top: 12),
@@ -94,4 +102,5 @@ class _ChoiceDialogState<T> extends State<ChoiceDialog<T>> {
 		);
 
 	}
+
 }

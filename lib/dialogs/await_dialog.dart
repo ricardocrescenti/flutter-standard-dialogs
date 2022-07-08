@@ -27,13 +27,14 @@ import 'package:standard_dialogs/widgets/await_dialog.dart';
 ///     return true;
 /// });
 /// ```
-Future<T> showAwaitDialog<T>(BuildContext context, {
-	@required Widget message, 
-	Future<T> Function(BuildContext context, Function(Widget message) updateMessage) function,
-	Color barrierColor,
+Future<T?> showAwaitDialog<T>(BuildContext context, {
+	Key? key,
+	required Widget message, 
+	required Future<T> Function(BuildContext context, Function(Widget message) updateMessage) function,
+	Color? barrierColor,
 	bool useSafeArea = true,
 	bool useRootNavigator = true,
-	RouteSettings routeSettings}) {
+	RouteSettings? routeSettings}) {
 	
 	return showDialog<T>(
 		context: context, 
@@ -41,7 +42,11 @@ Future<T> showAwaitDialog<T>(BuildContext context, {
 
 			return WillPopScope(
 				onWillPop: () => Future.value(false),
-				child: AwaitDialog<T>(message, function)
+				child: AwaitDialog<T>(
+					key: key,
+					message: message, 
+					function: function
+				)
 			);
 
 		},

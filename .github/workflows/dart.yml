@@ -24,6 +24,6 @@ jobs:
         ${{ secrets.PUB_CREDENTIALS }}
         EOF
     - name: Format code
-      run: dartfmt -w lib
+      run: dart format bin/ lib/ test/
     - name: Publish package
       run: pub publish -f

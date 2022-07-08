@@ -1,3 +1,8 @@
+## 2.0.0
+
+* Implemented Null Safety
+* Replaced package `pendantic` with `flutter_lints`.
+
 ## 1.2.2
 
 * Adjustments related to obsolete widgets and parameters

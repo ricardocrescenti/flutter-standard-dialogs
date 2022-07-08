@@ -43,18 +43,19 @@ enum DialogChoicesType { button, checkBok, radio }
 ///     showBasicDialog(context, title: Text('Selected user'), content: Text(result));
 /// }
 /// ```
-Future<T> showChoicesButtonDialog<T>(BuildContext context, {
-	Widget title, 
-	Widget content, 
-	@required List<DialogChoice<T>> choices, 
-	Widget cancelWidget,
+Future<T?> showChoicesButtonDialog<T>(BuildContext context, {
+	Key? key,
+	required Widget title, 
+	Widget? content, 
+	required List<DialogChoice<T>> choices, 
+	Widget? cancelWidget,
 	bool barrierDismissible = false,
-	Color barrierColor,
+	Color? barrierColor,
 	bool useSafeArea = true,
 	bool useRootNavigator = true,
-	RouteSettings routeSettings}) async {
+	RouteSettings? routeSettings}) async {
 
-	List<T> result = await _showChoicesDialog<T>(
+	List<T>? result = await _showChoicesDialog<T>(
 		context,
 		title: title, 
 		content: content, 
@@ -69,6 +70,7 @@ Future<T> showChoicesButtonDialog<T>(BuildContext context, {
 	);
 
 	return (result != null && result.isNotEmpty ? result[0] : null);
+
 }
 
 /// Displays a dialog with the choices informed in the parameter [choices] using
@@ -104,19 +106,20 @@ Future<T> showChoicesButtonDialog<T>(BuildContext context, {
 ///     showBasicDialog(context, title: Text('Selected users'), content: Text(result.reduce((value, element) => (value == null ? '' : value + ', ') + element)));
 /// }
 /// ```
-Future<T> showChoicesRadioDialog<T>(BuildContext context, {
-	Widget title, 
-	Widget content, 
-	@required List<DialogChoice<T>> choices, 
-	Widget cancelWidget,
-	Widget confirmWidget,
+Future<T?> showChoicesRadioDialog<T>(BuildContext context, {
+	Key? key,
+	required Widget title, 
+	Widget? content, 
+	required List<DialogChoice<T>> choices, 
+	Widget? cancelWidget,
+	Widget? confirmWidget,
 	bool barrierDismissible = false,
-	Color barrierColor,
+	Color? barrierColor,
 	bool useSafeArea = true,
 	bool useRootNavigator = true,
-	RouteSettings routeSettings}) async {
+	RouteSettings? routeSettings}) async {
 
-	List<T> result = await _showChoicesDialog<T>(
+	List<T>? result = await _showChoicesDialog<T>(
 		context,
 		title: title, 
 		content: content, 
@@ -132,6 +135,7 @@ Future<T> showChoicesRadioDialog<T>(BuildContext context, {
 	);
 
 	return (result != null && result.isNotEmpty ? result[0] : null);
+
 }
 
 /// Displays a dialog with the choices informed in the parameter [choices] using
@@ -167,19 +171,20 @@ Future<T> showChoicesRadioDialog<T>(BuildContext context, {
 ///     showBasicDialog(context, title: Text('Selected user'), content: Text(result));
 /// }
 /// ```
-Future<List<T>> showChoicesCheckBoxDialog<T>(BuildContext context, {
-	Widget title, 
-	Widget content, 
-	@required List<DialogChoice<T>> choices, 
-	Widget cancelWidget,
-	Widget confirmWidget,
+Future<List<T>?> showChoicesCheckBoxDialog<T>(BuildContext context, {
+	Key? key,
+	required Widget title, 
+	Widget? content, 
+	required List<DialogChoice<T>> choices, 
+	Widget? cancelWidget,
+	Widget? confirmWidget,
 	bool barrierDismissible = false,
-	Color barrierColor,
+	Color? barrierColor,
 	bool useSafeArea = true,
 	bool useRootNavigator = true,
-	RouteSettings routeSettings}) async {
+	RouteSettings? routeSettings}) async {
 
-	List<T> result = await _showChoicesDialog<T>(
+	List<T>? result = await _showChoicesDialog<T>(
 		context,
 		title: title, 
 		content: content, 
@@ -195,23 +200,25 @@ Future<List<T>> showChoicesCheckBoxDialog<T>(BuildContext context, {
 	);
 
 	return (result != null && result.isNotEmpty ? result : null);
+
 }
 
 /// This is the generic method used by [showChoicesButtonDialog], [showChoicesRadioDialog] 
 /// and showChoicesCheckBoxDialog[] to show the choice dialogues. Each type of 
 /// dialog will pass the parameters according to your need.
-Future<List<T>> _showChoicesDialog<T>(BuildContext context, {
-	Widget title, 
-	Widget content, 
-	@required DialogChoicesType choiceType,
-	@required List<DialogChoice<T>> choices, 
-	Widget cancelWidget,
-	Widget okWidget,
+Future<List<T>?> _showChoicesDialog<T>(BuildContext context, {
+	Key? key,
+	required Widget title, 
+	Widget? content, 
+	required DialogChoicesType choiceType,
+	required List<DialogChoice<T>> choices, 
+	Widget? cancelWidget,
+	Widget? okWidget,
 	bool barrierDismissible = false,
-	Color barrierColor,
+	Color? barrierColor,
 	bool useSafeArea = true,
 	bool useRootNavigator = true,
-	RouteSettings routeSettings}) async {
+	RouteSettings? routeSettings}) async {
 
 	return showDialog<List<T>>(
 		context: context, 
@@ -219,20 +226,27 @@ Future<List<T>> _showChoicesDialog<T>(BuildContext context, {
 
 			Widget child;
 			switch (choiceType) {
-				case DialogChoicesType.button: child = ChoiceButtonDialog<T>(title, content, choices, [
+
+				case DialogChoicesType.button: 
+					child = ChoiceButtonDialog<T>(key, title, content, choices, [
 						DialogAction(title: cancelWidget ?? Text(StandardDialogsLocalizations.of(context)[DialogResult.cancel]), action: null)
 					]);
 					break;
-				case DialogChoicesType.checkBok: child = ChoiceCheckBoxDialog<T>(title, content, choices, [
+
+				case DialogChoicesType.checkBok: 
+					child = ChoiceCheckBoxDialog<T>(key, title, content, choices, [
 						DialogAction(title: okWidget ?? Text(StandardDialogsLocalizations.of(context)[DialogResult.ok]), action: null),
 						DialogAction(title: cancelWidget ?? Text(StandardDialogsLocalizations.of(context)[DialogResult.cancel]), action: null),
 					]);
 					break;
-				default: child = ChoiceRadioDialog<T>(title, content, choices, [
+
+				case DialogChoicesType.radio: 
+					child = ChoiceRadioDialog<T>(key, title, content, choices, [
 						DialogAction(title: okWidget ?? Text(StandardDialogsLocalizations.of(context)[DialogResult.ok]), action: null),
 						DialogAction(title: cancelWidget ?? Text(StandardDialogsLocalizations.of(context)[DialogResult.cancel]), action: null),
 					]);
 					break;
+
 			}
 
 			return WillPopScope(

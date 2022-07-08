@@ -1,32 +1,56 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'home.dart';
 
-void main() {
-  runApp(MyApp());
+class MainApp extends StatefulWidget {
+
+	const MainApp({Key? key}) : super(key: key);
+
+	@override
+	State<StatefulWidget> createState() => _MainAppState();
+
 }
 
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Standard Dialogs',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      supportedLocales: [
-        Locale('en'),
-        Locale('es'),
-        Locale('pt')
-      ],
-      localizationsDelegates: [
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-      ],
-      home: HomePage(),
-    );
-  }
+class _MainAppState extends State<MainApp> {
+
+	Locale _locale = window.locale;
+	Locale get locale => _locale;
+
+	@override
+	Widget build(BuildContext context) {
+
+		return MaterialApp(
+			locale: _locale,
+			title: 'Flutter Standard Dialogs',
+			localizationsDelegates: const [
+				// ExampleLocalizationsDelegate(),
+				GlobalMaterialLocalizations.delegate,
+				GlobalCupertinoLocalizations.delegate,
+				GlobalWidgetsLocalizations.delegate,
+			],
+			supportedLocales: const [
+				Locale('en', ''),
+				Locale('es', ''),
+				Locale('pt', ''),
+			],
+			theme: ThemeData(
+				primarySwatch: Colors.blue,
+				visualDensity: VisualDensity.adaptivePlatformDensity,
+			),
+			home: HomePage(changeLocale: changeLocale),
+		);
+
+	}
+
+	void changeLocale(Locale newLocale) {
+		setState(() {
+			_locale = newLocale;
+		});
+	}
+
 }
+
+void main() => runApp(const MainApp());

@@ -25,12 +25,12 @@ class DialogAction<T> {
 	
 	/// Function that must be executed when the button is clicked, the function
 	/// should return the value expected by the dialog.
-	final T Function(BuildContext context) action;
+	final T Function(BuildContext context)? action;
 
 	/// Standard constructor of the [DialogAction] class
 	DialogAction({
-		@required this.title,
-		@required this.action
+		required this.title,
+		this.action
 	});
 
 	/// Execute the action of the button click.
@@ -39,15 +39,23 @@ class DialogAction<T> {
 	/// and after the dialog will be closed, returning the obtained value.
 	performClick(BuildContext context) async {
 
-		if (this.action == null) {
+		if (action == null) {
 			Navigator.of(context).pop();	
 		}
 
-		T result = (this.action != null ? this.action(context) : null);
+		T? result = (action != null ? action!(context) : null);
 		if (result != null) {
 			Navigator.of(context).pop(result);
 		}
 
+	}
+
+	/// Returns a list of [DialogAction] with returns of type [DialogResult.ok]
+	/// and [DialogResult.cancel] to be used in the [showBasicDialog] method.
+	static List<DialogAction<DialogResult>> ok(BuildContext context) {
+		return [
+			DialogAction(title: Text(StandardDialogsLocalizations.of(context)[DialogResult.ok]), action: (context) => DialogResult.ok),
+		];
 	}
 
 	/// Returns a list of [DialogAction] with returns of type [DialogResult.ok]
@@ -98,4 +106,5 @@ class DialogAction<T> {
 			DialogAction(title: Text(StandardDialogsLocalizations.of(context)[DialogResult.cancel]), action: (context) => DialogResult.cancel)
 		];
 	}
+
 }

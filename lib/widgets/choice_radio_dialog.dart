@@ -4,21 +4,19 @@ import 'package:standard_dialogs/widgets/choice_dialog.dart';
 
 /// Standard widget used by the [showChoicesRadioDialog] method.
 class ChoiceRadioDialog<T> extends ChoiceDialog<T> {
-	ChoiceRadioDialog(
+	
+	const ChoiceRadioDialog(
+		Key? key,
 		Widget title, 
-		Widget content,
+		Widget? content,
 		List<DialogChoice<T>> choices,
-		List<DialogAction> actions) : super(title, content, choices, actions);
+		List<DialogAction<T>> actions) : super(key, title, content, choices, actions);
 
 	@override
+	// ignore: avoid_renaming_method_parameters
 	List<Widget> buildChoicesList(BuildContext context, List<DialogChoice<T>> selectedChoices, Function setState) {
 		return choices.map<InkWell>((e) => InkWell(
-			onTap: () {
-				selectedChoices
-					..clear()
-					..add(e);
-				setState();
-			},
+			onTap: () => onTap(e, selectedChoices, setState),
 			child: Padding(
 				padding: const EdgeInsets.only(left: 10, right: 24),	
 				child: Row(
@@ -27,11 +25,11 @@ class ChoiceRadioDialog<T> extends ChoiceDialog<T> {
 						Radio<DialogChoice<T>>(
 							value: e,
 							groupValue: (selectedChoices.isEmpty ? null : selectedChoices.first),
-							onChanged: null,
+							onChanged: (dialogChoice) => onTap(e, selectedChoices, setState),
 						),
 						e.icon, 
 						buildChoicesDetail(context, e)
-					].where((element) => element != null).toList()
+					].where((element) => element != null).toList().cast()
 				)
 			)
 		)).toList();
@@ -48,4 +46,14 @@ class ChoiceRadioDialog<T> extends ChoiceDialog<T> {
 				child: actions[1].title)
 		];
 	}
+
+	onTap(DialogChoice<T> dialogChoice, List<DialogChoice<T>> selectedChoices, Function setState) {
+
+		selectedChoices
+			..clear()
+			..add(dialogChoice);
+		setState();
+
+	}
+
 }

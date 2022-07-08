@@ -4,23 +4,19 @@ import 'package:standard_dialogs/widgets/choice_dialog.dart';
 
 /// Standard widget used by the [showChoicesCheckBoxDialog] method.
 class ChoiceCheckBoxDialog<T> extends ChoiceDialog<T> {
-	ChoiceCheckBoxDialog(
+	
+	const ChoiceCheckBoxDialog(
+		Key? key, 
 		Widget title, 
-		Widget content,
+		Widget? content,
 		List<DialogChoice<T>> choices,
-		List<DialogAction> actions) : super(title, content, choices, actions);
+		List<DialogAction<T>> actions) : super(key, title, content, choices, actions);
 
 	@override
+	// ignore: avoid_renaming_method_parameters
 	List<Widget> buildChoicesList(BuildContext context, List<DialogChoice<T>> selectedChoices, Function setState) {
 		return choices.map<InkWell>((e) => InkWell(
-			onTap: () {
-				if (selectedChoices.contains(e)) {
-					selectedChoices.remove(e);
-				} else {
-					selectedChoices.add(e);
-				}
-				setState();
-			},
+			onTap: () => onTap(e, selectedChoices, setState),
 			child: Padding(
 				padding: const EdgeInsets.only(left: 10, right: 24),	
 				child: Row(
@@ -28,11 +24,11 @@ class ChoiceCheckBoxDialog<T> extends ChoiceDialog<T> {
 					children: [
 						Checkbox(
 							value: selectedChoices.contains(e),
-							onChanged: null,
+							onChanged: (checked) => onTap(e, selectedChoices, setState),
 						),
 						e.icon, 
 						buildChoicesDetail(context, e)
-					].where((element) => element != null).toList()
+					].where((element) => element != null).toList().cast()
 				)
 			)
 		)).toList();
@@ -48,5 +44,16 @@ class ChoiceCheckBoxDialog<T> extends ChoiceDialog<T> {
 				onPressed: () => cancelDialog(context), 
 				child: actions[1].title)
 		];
+	}
+
+	onTap(DialogChoice<T> dialogChoice, List<DialogChoice<T>> selectedChoices, Function setState) {
+
+		if (selectedChoices.contains(dialogChoice)) {
+			selectedChoices.remove(dialogChoice);
+		} else {
+			selectedChoices.add(dialogChoice);
+		}
+		setState();
+
 	}
 }

@@ -1,1 +1,5 @@
-enum ResultDialogLocalizationsEnum { error, success, warning }
+enum ResultDialogLocalizationsEnum { 
+	error, 
+	success, 
+	warning, 
+}

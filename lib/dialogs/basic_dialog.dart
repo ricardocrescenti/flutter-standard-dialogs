@@ -23,15 +23,15 @@ import 'package:standard_dialogs/standard_dialogs.dart';
 ///     ]
 /// );
 /// ```
-Future<T> showBasicDialog<T>(BuildContext context, {
-	Widget title, 
-	Widget content, 
-	List<DialogAction<T>> actions, 
+Future<T?> showBasicDialog<T>(BuildContext context, {
+	Widget? title, 
+	Widget? content, 
+	List<DialogAction<T>>? actions, 
 	bool barrierDismissible = false,
-	Color barrierColor,
+	Color? barrierColor,
 	bool useSafeArea = true,
 	bool useRootNavigator = true,
-	RouteSettings routeSettings}) async {
+	RouteSettings? routeSettings}) async {
 
 	assert(title != null || content != null);
 

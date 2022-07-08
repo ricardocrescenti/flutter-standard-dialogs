@@ -4,13 +4,16 @@ import 'package:standard_dialogs/widgets/choice_dialog.dart';
 
 /// Standard widget used by the [showChoicesButtonDialog] method.
 class ChoiceButtonDialog<T> extends ChoiceDialog<T> {
-	ChoiceButtonDialog(
+
+	const ChoiceButtonDialog(
+		Key? key, 
 		Widget title, 
-		Widget content,
-		List<DialogChoice> choices,
-		List<DialogAction> actions) : super(title, content, choices, actions);
+		Widget? content,
+		List<DialogChoice<T>> choices,
+		List<DialogAction<T>> actions) : super(key, title, content, choices, actions);
 
 	@override
+	// ignore: avoid_renaming_method_parameters
 	List<Widget> buildChoicesList(BuildContext context, List<DialogChoice<T>> selectedChoices, Function setState) {
 		return choices.map<SimpleDialogOption>((e) => SimpleDialogOption(
 			onPressed: () {
@@ -21,7 +24,7 @@ class ChoiceButtonDialog<T> extends ChoiceDialog<T> {
 				children: [
 					e.icon, 
 					buildChoicesDetail(context, e)
-				].where((element) => element != null).toList()
+				].where((element) => element != null).toList().cast()
 			)
 		)).toList();
 	}

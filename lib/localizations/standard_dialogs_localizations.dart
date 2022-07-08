@@ -1,11 +1,10 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:simple_localization/simple_localization.dart';
 import 'package:standard_dialogs/classes/dialog_result.dart';
 import 'package:standard_dialogs/localizations/localizations_enum.dart';
 
 class StandardDialogsLocalizations extends SimpleLocalizations {
+	
 	static StandardDialogsLocalizations of(BuildContext context) {
 		return SimpleLocalizations.of<StandardDialogsLocalizations>(context, (locale) => StandardDialogsLocalizations(locale));
 	}
@@ -13,10 +12,10 @@ class StandardDialogsLocalizations extends SimpleLocalizations {
 	StandardDialogsLocalizations(Locale locale) : super(locale);
 
 	@override
-	Locale get defaultLocale => Locale('en');
+	Locale get defaultLocale => const Locale('en');
 
 	@override
-	Iterable<Locale> get suportedLocales => [
+	Iterable<Locale> get suportedLocales => const [
 		Locale('en'),
 		Locale('es'),
 		Locale('pt')
@@ -48,7 +47,7 @@ class StandardDialogsLocalizations extends SimpleLocalizations {
 
 			ResultDialogLocalizationsEnum.error: 'Error',
 			ResultDialogLocalizationsEnum.success: 'Éxito',
-			ResultDialogLocalizationsEnum.warning: 'Advertencia',
+			ResultDialogLocalizationsEnum.warning: 'Aviso',
 		},
 		'pt': {
 			DialogResult.abort: 'Abortar',
@@ -61,12 +60,19 @@ class StandardDialogsLocalizations extends SimpleLocalizations {
 
 			ResultDialogLocalizationsEnum.error: 'Erro',
 			ResultDialogLocalizationsEnum.success: 'Sucesso',
-			ResultDialogLocalizationsEnum.warning: 'Aviso',
+			ResultDialogLocalizationsEnum.warning: 'Atenção',
 		}
 	};
 
 }
 
 class StandardDialogsLocalizationsDelegate extends SimpleLocalizationsDelegate<StandardDialogsLocalizations> {
-  StandardDialogsLocalizationsDelegate(StandardDialogsLocalizations Function(Locale locale) customLocalization) : super(customLocalization);
+	
+	const StandardDialogsLocalizationsDelegate() : super();
+
+	@override
+	StandardDialogsLocalizations initializeLocalization(Locale currentLocale) {
+		return StandardDialogsLocalizations(currentLocale);
+	}
+
 }

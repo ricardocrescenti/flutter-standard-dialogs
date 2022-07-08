@@ -1,1 +1,9 @@
-enum DialogResult { abort, cancel, ignore, no, ok, retry, yes, }
+enum DialogResult { 
+	abort, 
+	cancel, 
+	ignore, 
+	no, 
+	ok, 
+	retry, 
+	yes, 
+}
