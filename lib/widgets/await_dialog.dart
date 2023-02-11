@@ -86,7 +86,7 @@ class _AwaitDialogState<T> extends State<AwaitDialog<T>> {
 
 		if (widget is Text) {
 			widget = AnimatedDefaultTextStyle(
-				style: (widget.style ?? Theme.of(context).textTheme.bodyText2)!,
+				style: (widget.style ?? Theme.of(context).textTheme.bodyMedium)!,
 				duration: kThemeChangeDuration,
 				textAlign: TextAlign.center,
 				softWrap: widget.softWrap ?? true,

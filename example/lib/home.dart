@@ -228,7 +228,8 @@ class HomePage extends StatelessWidget {
 					icon: const Icon(Icons.person),
 					title: const Text('Ricardo Crescenti'),
 					subtitle: const Text('ricardo.crescenti@gmail.com'),
-					value: 'ricardo.crescenti'),
+					value: 'ricardo.crescenti',
+					checked: true),
 				DialogChoice(
 					icon: const Icon(Icons.person),
 					title: const Text('Ana Luiza Crescenti'),
@@ -263,7 +264,8 @@ class HomePage extends StatelessWidget {
 					icon: const Icon(Icons.person),
 					title: const Text('Ricardo Crescenti'),
 					subtitle: const Text('ricardo.crescenti@gmail.com'),
-					value: 'ricardo.crescenti'),
+					value: 'ricardo.crescenti',
+					checked: true),
 				DialogChoice(
 					icon: const Icon(Icons.person),
 					title: const Text('Ana Luiza Crescenti'),

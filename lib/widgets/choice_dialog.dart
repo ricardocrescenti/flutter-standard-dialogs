@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:standard_dialogs/standard_dialogs.dart';
 
+import 'choice_button_dialog.dart';
+import 'choice_radio_dialog.dart';
+
 /// Abstract widget used to set up the choices dialog
 abstract class ChoiceDialog<T> extends StatefulWidget {
 
@@ -42,7 +45,7 @@ abstract class ChoiceDialog<T> extends StatefulWidget {
 
 		return Padding(
 			padding: const EdgeInsetsDirectional.only(top: 2),
-			child: buildTextWithStyle(description, Theme.of(context).textTheme.subtitle2!)
+			child: buildTextWithStyle(description, Theme.of(context).textTheme.titleMedium!)
 		);
 
 	}
@@ -80,7 +83,22 @@ abstract class ChoiceDialog<T> extends StatefulWidget {
 
 class _ChoiceDialogState<T> extends State<ChoiceDialog<T>> {
 
-	List<DialogChoice<T>> selectedChoices = [];
+	late List<DialogChoice<T>> selectedChoices = [];
+
+	@override
+	void initState() {
+		super.initState();
+		
+		selectedChoices = widget.choices.where((choice) => choice.checked).toList();
+		if (this is! ChoiceButtonDialog) {
+			
+			if (this is ChoiceRadioDialog && selectedChoices.length > 1) {
+				selectedChoices = [selectedChoices.elementAt(0)];
+			}
+
+		}
+		
+	}
 
 	@override
 	Widget build(BuildContext context) {

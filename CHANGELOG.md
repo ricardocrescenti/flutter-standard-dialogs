@@ -1,3 +1,8 @@
+## 2.1.0
+
+* Added option to be able to define which option should start checked when opening the checkbox or radio dialog. For that, the `checked` parameter must be informed in the `DialogChoice` class.
+* Replaced obsolete properties with new properties.
+
 ## 2.0.0
 
 * Implemented Null Safety

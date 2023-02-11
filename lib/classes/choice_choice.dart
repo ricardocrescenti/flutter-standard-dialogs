@@ -47,11 +47,17 @@ class DialogChoice<T> {
 	/// Value to be returned when the choice is selected.
 	final T value;
 
+	/// Identifies if the choice is already checked by default, this parameter
+	/// is only used for radio and checkbox dialogs
+	bool checked;
+
 	/// Standard constructor of the [DialogChoice] class
 	DialogChoice({
 		this.icon,
 		required this.title,
 		this.subtitle,
-		required this.value
+		required this.value,
+		this.checked = false
 	});
+
 }
